@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { addToCart } from '../../reducer/productReducer/productReducer';
 import { AppDispatch } from '../../reducer/store';
 import Button from '../Button/Button';
+import ButtonWithIcon from '../ButtonWithIcon/ButtonWithIcon';
 import './ProductCard.scss';
 
 type ProductCardProps = {
@@ -28,7 +29,7 @@ export const ProductCard: FC<ProductCardProps> = ({
           label="DETAIL"
           padding="12px 44px"
         />
-        <Button
+        <ButtonWithIcon
           type="icon"
           onClick={() => { dispatch(addToCart(id)); }}
           icon="./assets/icons/cart.svg"

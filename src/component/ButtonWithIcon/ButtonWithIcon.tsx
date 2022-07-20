@@ -1,16 +1,18 @@
-import './Button.scss';
+import './ButtonWithIcon.scss';
 
 type ButtonProps = {
   label?: string;
   primary?: boolean,
   padding: string,
-  type?: 'gray',
+  type?: 'gray' | 'icon',
   onClick?: () => void;
+  icon?: string,
 }
 
-const Button = ({
+const ButtonWithIcon = ({
   padding,
   onClick,
+  icon,
   label,
   type,
   primary,
@@ -24,8 +26,9 @@ const Button = ({
       className={['text__button', `text__button--${type}`, mode].join(' ')}
     >
       {label}
+      <img className="icon__button--cart" src={icon} alt="Cart" />
     </button>
   );
 };
 
-export default Button;
+export default ButtonWithIcon;

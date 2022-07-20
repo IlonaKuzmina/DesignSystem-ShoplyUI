@@ -8,6 +8,7 @@ import ProductCard from '../ProductCard/ProductCard';
 import HomeTitle from '../HomeTitle/HomeTitle';
 
 import './HomeProduct.scss';
+import ButtonWithIcon from '../ButtonWithIcon/ButtonWithIcon';
 
 const HomeProduct: FC = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const HomeProduct: FC = () => {
           />
         ))}
       </div>
-      <Button
+      <ButtonWithIcon
         padding="16px 52px"
         icon="./assets/icons/arrow.svg"
         label="All product"

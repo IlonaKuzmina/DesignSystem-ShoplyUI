@@ -26,6 +26,15 @@
   border: none;
 }
 
+.text__button--icon {
+  background: #ffffff;
+  border: none;
+}
+
+.icon__button--cart{
+  display: inline-block;
+}
+
 @media screen and (max-width: 360px) {
   .text__button {
     width: 100%;

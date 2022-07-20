@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
+import BurgerNav from '../BurgerNav/BurgerNav';
 import Button from '../Button/Button';
 import './Navigation.scss';
 
@@ -29,6 +30,11 @@ export const Navigation = () => {
 
         <Button padding="8px 33px" label="Log in" primary />
       </div>
+
+      <div className="burger__navigation--wrapper hidden" aria-hidden="true">
+        <BurgerNav />
+      </div>
+
     </div>
   );
 };
