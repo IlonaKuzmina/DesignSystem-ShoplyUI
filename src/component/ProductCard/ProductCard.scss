@@ -1,0 +1,28 @@
+.card__wrapper {
+  box-shadow: (10px 10px 10px rgba(0, 0, 0, 0.25));
+  border-color: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.25));
+  border-radius: 20px;
+  width: 269px;
+  height: 418px;
+  background-color: rgb(196, 196, 175);
+}
+
+.card__button--container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 770px) {
+  .card__wrapper {
+    max-width: 196px;
+    max-height: 322px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .card__wrapper {
+    max-width: 129px;
+    max-height: 200px;
+  }
+}

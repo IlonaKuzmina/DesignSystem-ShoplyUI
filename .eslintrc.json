@@ -1,0 +1,78 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["plugin:react/recommended", "airbnb"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint", "import"],
+  "rules": {
+    "react/jsx-filename-extension": [
+      2,
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
+    "react/button-has-type": "off",
+    "react/require-default-props": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-uses-react": "off",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "import/no-unresolved": "error",
+    "import/no-named-as-default": 0,
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/*.stories.*", "**/.storybook/**/*.*"],
+        "peerDependencies": true
+      }
+    ],
+    "no-param-reassign": "off",
+    "no-use-before-define": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "max-len": [
+      1,
+      {
+        "code": 120
+      }
+    ],
+    "arrow-body-style": ["error", "as-needed"],
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/media-has-caption": "off",
+    "react/jsx-props-no-spreading": ["error", {"custom": "ignore"}]
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "packages/*/tsconfig.json"
+      }
+    }
+  }
+}

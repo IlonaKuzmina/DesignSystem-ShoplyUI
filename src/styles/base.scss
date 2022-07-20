@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+* {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+:root {
+  --dark_color: #211f1c;
+  --dark_color-D45: #393d45;
+  --dark_gray-467: #616467;
+  --light_gray-CAC: #acacac;
+
+  --light_color-8F8: #f8f8f8;
+  --light_color-DFB: #fefdfb;
+  --white: #ffffff;
+  --white_gradient: linear-gradient(
+    90deg,
+    #fcf9f6 14.04%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}

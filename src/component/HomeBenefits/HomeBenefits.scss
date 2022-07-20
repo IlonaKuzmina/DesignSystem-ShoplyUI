@@ -1,0 +1,25 @@
+.benefits__container {
+  background-color: #ffffff;
+  padding: 103px 0 67px;
+  text-align: center;
+}
+
+.benefits__wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 50px 0 76px 0;
+}
+
+@media screen and (max-width: 770px) {
+  .benefits__wrapper {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .benefits__wrapper {
+    padding: 0 16px;
+  }
+}

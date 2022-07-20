@@ -1,0 +1,110 @@
+.costumer__container {
+  background-color: #f8f8f8;
+  padding: 96px 181px 154px;
+}
+
+.costumer__image {
+  max-width: 323px;
+  max-height: 440px;
+}
+
+.costumer__wrapper {
+  text-align: start;
+  padding-left: 63px;
+}
+
+.costumer__title {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 48px;
+  color: #393d45;
+  padding: 15px 0 52px;
+}
+
+.costumer__text {
+  font-size: 22px;
+  line-height: 40px;
+  color: #616467;
+  padding-bottom: 30px;
+}
+
+.costumer__text--signature {
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 29px;
+  color: #616467;
+}
+
+.costumer__text--profesion {
+  font-size: 22px;
+  line-height: 26px;
+  color: #616467;
+  padding: 6px 0;
+}
+
+@media screen and (max-width: 770px) {
+  .costumer__container {
+    padding: 30px 74px;
+  }
+
+  .costumer__wrapper {
+    text-align: center;
+    padding: 0;
+  }
+
+  .costumer__image {
+    border-radius: 50%;
+    width: 103px;
+    margin: 0 auto;
+  }
+
+  .costumer__title {
+    font-size: 20px;
+    line-height: 23px;
+    padding-bottom: 23px;
+  }
+
+  .costumer__text {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  .costumer__text--signature,
+  .costumer__text--profesion {
+    font-size: 18px;
+    line-height: 21px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .costumer__image {
+    border-radius: 50%;
+    width: 70px;
+    margin: 0 auto;
+  }
+
+  .costumer__wrapper {
+    text-align: center;
+  }
+
+  .costumer__container {
+    padding: 30px 10px;
+  }
+
+  .costumer__title {
+    font-size: 16px;
+    line-height: 19px;
+    padding-bottom: 13px;
+  }
+
+  .costumer__text {
+    font-size: 14px;
+    line-height: 25px;
+    padding-bottom: 16px;
+  }
+
+  .costumer__text--profesion {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}

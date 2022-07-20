@@ -1,0 +1,26 @@
+.home__title {
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 132%;
+  letter-spacing: 0.015em;
+  color: #393d45;
+  text-transform: capitalize;
+  padding-bottom: 60px;
+  text-align: center;
+}
+
+@media screen and (max-width: 770px) {
+  .home__title {
+    font-size: 28px;
+    line-height: 34px;
+    padding-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .home__title {
+    font-size: 22px;
+    line-height: 26px;
+    padding-bottom: 30px;
+  }
+}

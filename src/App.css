@@ -1,0 +1,16 @@
+
+#root {
+  max-width: 1440px;
+  margin: 0 auto;
+  background: #f8f8f8;
+  height: 100%;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
