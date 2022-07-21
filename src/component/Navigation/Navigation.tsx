@@ -33,10 +33,6 @@ export const Navigation = () => {
           <Button padding="8px 33px" label="Log in" primary />
         </div>
 
-        {/* <div className="burger__navigation--wrapper hidden" aria-hidden="true">
-          <BurgerNav />
-        </div> */}
-
       </div>
 
       <section className="top-nav hidden" aria-hidden="true">
