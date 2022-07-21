@@ -20,7 +20,7 @@ const BurgerNav = () => {
         <li><NavLink to="/products" className="navigation__link">Products</NavLink></li>
         <li><NavLink to="/about" className="navigation__link">About</NavLink></li>
         <li>
-          <NavLink to="/cart" className="navigation__link cart">
+          <NavLink to="/cart" className="navigation__link">
             Cart
             <span className="cart__button--counterb">0</span>
           </NavLink>

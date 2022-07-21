@@ -16,6 +16,7 @@
   background-color: #f8f8f8;
   color: #fff;
   height: 112px;
+  font-weight: bold;
 }
 
 .menu {
@@ -94,21 +95,16 @@
 }
 
 .cart__button--counterb {
-  position: absolute;
-  top: 0px;
-  right: -15px;
   font-size: 10px;
   line-height: 10px;
   background: #ff6565;
   color: #f5f7fb;
   border-radius: 50%;
-  padding: 2px 4px;
+  padding: 1px 3px;
+  margin-left: 10px;
 }
 
 @media (max-width: 770px) {
-  // .hidden {
-  //   display: block;
-  // }
   .logo__wrapper {
     padding-left: 55px;
   }
@@ -205,7 +201,8 @@
     margin-top: 8px;
   }
 
-  .navigation__link {
+  .navigation__link,
+  .cart {
     font-size: 14px;
     line-height: 20px;
   }
