@@ -18,7 +18,7 @@ const HomeProduct: FC = () => {
     <div className="home__product--container">
       <HomeTitle title="product" />
       <div className="product__card--container">
-        {products && products.items.map(({ image, id, name }) => (
+        {/* {products && products.items.map(({ image, id, name }) => (
           <ProductCard
             image={image}
             name={name}
@@ -26,7 +26,7 @@ const HomeProduct: FC = () => {
             backgroundImage={image}
             id={id}
           />
-        ))}
+        ))} */}
       </div>
       <ButtonWithIcon
         padding="16px 52px"

@@ -7,7 +7,6 @@ import HomeHeader from '../../component/HomeHeader/HomeHeader';
 
 export const HomePage = () => (
   <>
-    <div>This is my home page</div>
     <HomeHeader />
     <HomePartners />
     <HomeProduct />
