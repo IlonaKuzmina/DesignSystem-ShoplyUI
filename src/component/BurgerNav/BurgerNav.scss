@@ -19,6 +19,17 @@
   font-weight: bold;
 }
 
+#cart {
+  display: none;
+  position: relative;
+}
+
+#counter {
+  position: absolute;
+  top: -3px;
+  left: 21px;
+}
+
 .menu {
   display: flex;
   flex-direction: row;
@@ -105,6 +116,11 @@
 }
 
 @media (max-width: 770px) {
+  #cart {
+    display: block;
+    position: relative;
+  }
+
   .logo__wrapper {
     padding-left: 55px;
   }

@@ -1,0 +1,31 @@
+.phone__content--wrapper {
+  width: 90%;
+  text-align: start;
+}
+
+.phone__content--button {
+  text-transform: uppercase;
+  text-align: justify;
+  cursor: pointer;
+  border: none;
+  color: #616467;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  padding: 0;
+  background-color: inherit;
+}
+
+.phone__underline--specifiction {
+  width: 38px;
+  border: 2px solid #519872;
+  margin: 0px;
+  text-align: justify;
+}
+
+.phone__content--text {
+  text-align: justify;
+  margin-top: 20px;
+  font-size: 20px;
+  line-height: 25px;
+}

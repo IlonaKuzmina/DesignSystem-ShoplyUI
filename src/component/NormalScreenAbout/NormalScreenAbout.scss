@@ -1,0 +1,31 @@
+.aboutpage__content--title {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 47px;
+  text-align: justify;
+  text-transform: uppercase;
+}
+
+.aboutpage__content--text {
+  font-size: 24px;
+  line-height: 40px;
+  text-align: justify;
+  color: #616467;
+  padding: 107px 0px;
+}
+
+.aboutpage__underline--specifiction {
+  width: 100px;
+  text-align: justify;
+  margin: 0px;
+  border: 2px solid #616467;
+  background-color: #616467;
+}
+
+@media screen and (max-width: 1020px) {
+  .aboutpage__content--text {
+    font-size: 25px;
+    line-height: 29px;
+    padding: 36px 0px;
+  }
+}

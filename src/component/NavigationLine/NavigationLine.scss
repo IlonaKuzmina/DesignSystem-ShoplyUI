@@ -1,0 +1,46 @@
+.navigation__line--container {
+  width: 87%;
+  margin: 40px auto;
+  height: 81px;
+  background: #ffffff;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  font-size: 32px;
+  line-height: 38px;
+  align-items: center;
+  padding: 19px 0 19px 24px;
+}
+
+.navigaation__line--link {
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #616467;
+}
+
+.navigation__line--separator {
+  padding: 0 20px;
+  color: #616467;
+}
+
+@media screen and (max-width: 770px) {
+  .navigation__line--container {
+    height: 71px;
+    font-size: 25px;
+    line-height: 30px;
+    padding: 25px 0 25px 39px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .navigation__line--container {
+    margin-top: 30px;
+    height: 51px;
+    font-size: 16px;
+    line-height: 19px;
+    padding: 16px 0 16px 9px;
+  }
+}

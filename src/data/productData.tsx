@@ -93,12 +93,23 @@ const productsData: ProductData[] = [
     name: 'Black diamond',
     specification: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh erat',
     price: 1500,
-    image: './assets/images/product_14-diamond.png',
+    image: './assets/images/product_8.png',
     category: 'jawelery',
     subcategory: 'diamond',
     inStock: 1,
     inCart: false,
   },
+  // {
+  //   id: 9,
+  //   name: 'Black diamond',
+  //   specification: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh erat',
+  //   price: 1500,
+  //   image: './assets/images/product_14-diamond.png',
+  //   category: 'jawelery',
+  //   subcategory: 'diamond',
+  //   inStock: 1,
+  //   inCart: false,
+  // },
 ];
 
 export const getAllProducts = () => [...productsData];

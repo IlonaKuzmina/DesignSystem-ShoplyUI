@@ -29,7 +29,7 @@ export const Navigation = () => {
             </button>
           </div>
 
-          <Button padding="8px 33px" label="Log in" primary />
+          <Button onClick={() => { navigate('/login'); }} padding="8px 33px" label="Log in" primary />
         </div>
       </div>
 

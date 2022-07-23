@@ -20,11 +20,12 @@ const BurgerNav = () => {
         <li><NavLink to="/products" className="navigation__link">Products</NavLink></li>
         <li><NavLink to="/about" className="navigation__link">About</NavLink></li>
         <li>
-          <NavLink to="/cart" className="navigation__link">
+          <NavLink to="/cart" id="cart" className="navigation__link">
             Cart
-            <span className="cart__button--counterb">0</span>
+            <span id="counter" className="cart__button--counterb">0</span>
           </NavLink>
         </li>
+        <li><span className="navigation__link" onClick={() => { navigate('/login'); }}>Log in</span></li>
       </ul>
     </section>
   );

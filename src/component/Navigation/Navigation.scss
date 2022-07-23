@@ -61,6 +61,11 @@
   display: none;
 }
 
+.active{
+ font-weight: bold;
+ text-decoration: underline;
+}
+
 @media screen and (max-width: 770px) {
   .navigation__wrapper {
     padding: 0px;

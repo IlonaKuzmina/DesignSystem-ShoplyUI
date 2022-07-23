@@ -21,14 +21,19 @@ export const ProductCard: FC<ProductCardProps> = ({
   const dispatch = useDispatch<AppDispatch>();
 
   return (
-    <div key={id} className="card__wrapper" style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <div
+      key={id}
+      className="card__wrapper"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
       <div className="card__button--container">
-        <Button
-          primary
-          onClick={() => navigate('/products/:id')}
-          label="DETAIL"
-          padding="12px 44px"
-        />
+        <button
+          className="product__button--customisation"
+          onClick={() => { navigate(`/products/${id}`); }}
+        >
+          detail
+
+        </button>
         <ButtonWithIcon
           type="icon"
           onClick={() => { dispatch(addToCart(id)); }}
