@@ -26,5 +26,5 @@
     "test/**/*.ts",
     "typings/**/*.ts",
     "src/**/*.js"
-  ]
+, "server.js"  ]
 }
