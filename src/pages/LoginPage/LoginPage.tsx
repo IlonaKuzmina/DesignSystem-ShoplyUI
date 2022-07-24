@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import Button from '../../component/Button/Button';
 import './LoginPage.scss';
 
@@ -24,6 +25,10 @@ const LoginPage = () => {
               <span>Forgot password?</span>
               <br />
               <button className="login__button">Next</button>
+              <br />
+              <NavLink to="/admin/home" className="navigation__link">Admin home</NavLink>
+              <br />
+              <NavLink to="/admin/products" className="navigation__link">Admin products</NavLink>
             </form>
 
           </div>

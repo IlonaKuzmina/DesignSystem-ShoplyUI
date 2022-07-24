@@ -30,7 +30,7 @@ const HomeProduct: FC = () => {
           ))}
         </MediaQuery>
 
-        <MediaQuery minWidth={360} maxWidth={769}>
+        <MediaQuery minWidth={360} maxWidth={950}>
           {products && products.items.slice(0, 6).map(({ image, id, name }) => (
             <ProductCard
               image={image}
@@ -42,7 +42,7 @@ const HomeProduct: FC = () => {
           ))}
         </MediaQuery>
 
-        <MediaQuery minWidth={770}>
+        <MediaQuery minWidth={951}>
           {products && products.items.slice(0, 9).map(({ image, id, name }) => (
             <ProductCard
               image={image}

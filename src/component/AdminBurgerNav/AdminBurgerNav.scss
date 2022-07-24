@@ -1,0 +1,226 @@
+.navigation__link {
+    font-size: 20px;
+    line-height: 30px;
+    color: #616467;
+  }
+  
+  .hiddenb {
+    display: none;
+  }
+  
+  .top-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f8f8f8;
+    color: #fff;
+    height: 112px;
+    font-weight: bold;
+  }
+  
+  #cart {
+    display: none;
+    position: relative;
+  }
+  
+  #counter {
+    position: absolute;
+    top: -3px;
+    left: 21px;
+  }
+  
+  .menu {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu > li {
+    margin: 0 1rem;
+    overflow: hidden;
+    background-color: #f8f8f8;
+  }
+  
+  .menu-button-container {
+    display: none;
+    height: 100%;
+    width: 109px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #393d45;
+  }
+  
+  #menu-toggle {
+    display: none;
+  }
+  
+  .menu-button {
+    color: #f5f7fb;
+    height: 50px;
+    right: 30px;
+  }
+  
+  .menu-button,
+  .menu-button::before,
+  .menu-button::after {
+    display: block;
+    background-color: #fff;
+    position: absolute;
+    height: 4px;
+    width: 50px;
+    transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 2px;
+  }
+  
+  .menu-button::before {
+    content: "";
+    margin-top: -12px;
+  }
+  
+  .menu-button::after {
+    content: "";
+    margin-top: 12px;
+  }
+  
+  #menu-toggle:checked + .menu-button-container .menu-button::before {
+    margin-top: 0px;
+    transform: rotate(405deg);
+  }
+  
+  #menu-toggle:checked + .menu-button-container .menu-button {
+    background: rgba(255, 255, 255, 0);
+  }
+  
+  #menu-toggle:checked + .menu-button-container .menu-button::after {
+    margin-top: 0px;
+    transform: rotate(-405deg);
+  }
+  
+  .cart {
+    position: relative;
+  }
+  
+  .cart__button--counterb {
+    font-size: 10px;
+    line-height: 10px;
+    background: #ff6565;
+    color: #f5f7fb;
+    border-radius: 50%;
+    padding: 1px 3px;
+    margin-left: 10px;
+  }
+  
+  @media (max-width: 770px) {
+    #cart {
+      display: block;
+      position: relative;
+    }
+  
+    .logo__wrapper {
+      padding-left: 55px;
+    }
+  
+    .menu-button-container {
+      display: flex;
+    }
+  
+    .menu {
+      position: absolute;
+      top: 0;
+      margin-top: 112px;
+      left: 0;
+      flex-direction: column;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    #menu-toggle ~ .menu li {
+      height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+      background-color: #f8f8f8;
+    }
+  
+    #menu-toggle:checked ~ .menu li {
+      border-top: 1px solid #acacac;
+      border-bottom: 1px solid #acacac;
+      height: 2.5em;
+      padding: 0.5em;
+      transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+  
+    .menu > li {
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0.5em 0;
+      width: 100%;
+      color: white;
+    }
+  
+    .menu > li:not(:last-child) {
+      border-bottom: 1px solid #444;
+    }
+  
+    .menu-button {
+      right: 30px;
+    }
+  }
+  
+  @media screen and (max-width: 360px) {
+    .logo__wrapper {
+      padding-left: 20px;
+      width: 80px;
+    }
+  
+    .top-nav {
+      height: 52px;
+    }
+  
+    .menu-button {
+      right: 14px;
+    }
+  
+    .menu {
+      margin-top: 52px;
+    }
+  
+    .menu-button-container {
+      width: 52px;
+    }
+  
+    .menu-button,
+    .menu-button::before,
+    .menu-button::after {
+      display: block;
+      background-color: #fff;
+      position: absolute;
+      height: 4px;
+      width: 30px;
+      transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+      border-radius: 2px;
+    }
+  
+    .menu-button::before {
+      margin-top: -8px;
+    }
+  
+    .menu-button::after {
+      margin-top: 8px;
+    }
+  
+    .navigation__link,
+    .cart {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+  
