@@ -3,8 +3,8 @@ import './HomePartner.scss';
 
 export const HomePartners = () => (
   <footer className="partner__container">
-    <div className="row">
-      <div className="col-xs-12">
+    <div className="">
+      <div className="">
         <HomeTitle title="Our partners" />
         <div className="partner__logos--container">
           <div className="partner__logo--wrapper">
