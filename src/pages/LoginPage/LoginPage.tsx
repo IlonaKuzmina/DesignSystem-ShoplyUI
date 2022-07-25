@@ -1,9 +1,13 @@
-import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Button from '../../component/Button/Button';
 import './LoginPage.scss';
 
-const LoginPage = () => {
-  const c = 5;
+const LoginPage = ({ loginStatus }: any) => {
+  const [admin, setAdmin] = useState('');
+  const navigate = useNavigate();
+
+  const data = true;
 
   return (
     <div className="login__header--wrapper">
@@ -16,7 +20,7 @@ const LoginPage = () => {
 
         <div className="col-xs-12 col-sm-5 col-md-5">
           <div className="login__wrapper--left">
-            <form action="">
+            <form>
               <h1 className="login__title">login</h1>
               <input className="login__name--input" type="text" placeholder=" " />
               <br />
@@ -24,11 +28,17 @@ const LoginPage = () => {
               <br />
               <span>Forgot password?</span>
               <br />
-              <button className="login__button">Next</button>
-              <br />
+              <button
+                className="login__button"
+                onClick={() => { loginStatus(data); navigate('/admin/home'); }}
+              >
+                Next
+
+              </button>
+              {/* <br />
               <NavLink to="/admin/home" className="navigation__link">Admin home</NavLink>
               <br />
-              <NavLink to="/admin/products" className="navigation__link">Admin products</NavLink>
+              <NavLink to="/admin/products" className="navigation__link">Admin products</NavLink> */}
             </form>
 
           </div>

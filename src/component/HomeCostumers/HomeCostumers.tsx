@@ -12,9 +12,9 @@ const HomeCostumers = () => (
         <div className="costumer__wrapper">
           <h2 className="costumer__title">Help us Improve our productivity</h2>
           <p className="costumer__text">
-            `&quot;`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc consectetur,
+            &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc consectetur,
             purus id tincidunt feugiat, metus orci sagittis elit, quis tempor orci elit id arcu.
-            Proin egestas bibendum efficitur. `&quot;`
+            Proin egestas bibendum efficitur. &quot;
 
           </p>
           <p className="costumer__text--signature">Adriana Lopez</p>

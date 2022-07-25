@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import './App.css';
@@ -15,11 +15,16 @@ import AdminHomePage from './pages/AdminHomePage/AdminHomePage';
 import AdminHeader from './component/AdminHeader/AdminHeader';
 
 const App = () => {
-  const [admin, setAdmin] = useState(true);
+  const [adminIsLoged, setAdminIsLoged] = useState(false);
+
+  const loginStatus = (logInfo: any) => {
+    setAdminIsLoged(logInfo);
+    console.log(adminIsLoged);
+  };
 
   return (
     <Router>
-      {admin ? (
+      {!adminIsLoged ? (
         <>
           <Navigation />
           <Routes>
@@ -29,25 +34,19 @@ const App = () => {
             <Route path="/products/:id" element={<DetailPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/cart" element={<CartPage />} />
-            <Route path="/login" element={<LoginPage />} />
-
-            <Route path="/admin/home" element={<AdminHomePage />} />
-            <Route path="/admin/products" element={<AdminProductsPage />} />
+            <Route path="/login" element={<LoginPage loginStatus={loginStatus} />} />
           </Routes>
         </>
       )
         : (
           <>
-            <AdminHeader />
+            <AdminHeader loginStatus={loginStatus} />
             <Routes>
-              <Route path="/" element={<AdminHomePage />} />
               <Route path="/admin/home" element={<AdminHomePage />} />
               <Route path="/admin/products" element={<AdminProductsPage />} />
             </Routes>
-
           </>
         )}
-
       <Footer />
     </Router>
   );

@@ -2,17 +2,17 @@ import { useNavigate } from 'react-router-dom';
 import AdminBurgerNav from '../AdminBurgerNav/AdminBurgerNav';
 import './AdminHeader.scss';
 
-const AdminHeader = () => {
+const AdminHeader = ({ loginStatus }: any) => {
   const c = 4;
   const navigate = useNavigate();
 
   return (
     <div className="admin__header--container">
 
-      <AdminBurgerNav />
+      <AdminBurgerNav loginStatus={loginStatus} />
 
-      <div className="logo__wrapper" onClick={() => { navigate('/admin/home'); }}>
-        <img src="./assets/logo/Shoply..png" alt="" />
+      <div className="logo__wrapper">
+        <img src="./public/assets/logo/Shoply..png" alt="" />
       </div>
     </div>
   );
