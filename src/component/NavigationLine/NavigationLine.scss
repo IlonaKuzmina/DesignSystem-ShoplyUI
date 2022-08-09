@@ -44,6 +44,11 @@
     line-height: 30px;
     padding: 25px 0 25px 39px;
   }
+
+  .navigation__line--separator {
+    padding: 0 10px;
+    font-size: 25px;
+  }
 }
 
 @media screen and (max-width: 360px) {
@@ -53,5 +58,10 @@
     font-size: 16px;
     line-height: 19px;
     padding: 16px 0 16px 9px;
+  }
+
+  .navigation__line--separator {
+    padding: 0 5px;
+    font-size: 16px;
   }
 }

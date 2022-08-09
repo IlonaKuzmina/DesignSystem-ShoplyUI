@@ -1,9 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import { executionAsyncResource } from 'async_hooks';
+import { useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
+import productsData from '../../data/productData';
+import { RootState } from '../../reducer/store';
 import Button from '../Button/Button';
 import './BurgerNav.scss';
 
 const BurgerNav = () => {
+  const products = useSelector(({ product }: RootState) => product);
   const navigate = useNavigate();
 
   return (
@@ -22,7 +27,7 @@ const BurgerNav = () => {
         <li>
           <NavLink to="/cart" id="cart" className="navigation__link">
             Cart
-            <span id="counter" className="cart__button--counterb">0</span>
+            <span id="counter" className="cart__button--counterb">{products.cartTotal}</span>
           </NavLink>
         </li>
         <li><span className="navigation__link" onClick={() => { navigate('/login'); }}>Log in</span></li>

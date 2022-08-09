@@ -9,17 +9,31 @@ import CartPage from './pages/CartPage/CartPage';
 import DetailPage from './pages/DetailPage/DetailPage';
 import HomePage from './pages/HomePage/HomePage';
 import LoginPage from './pages/LoginPage/LoginPage';
-import ProductPage from './pages/ProductPage/ProductPage';
+import ProductsPage from './pages/ProductsPage/ProductsPage';
 import AdminProductsPage from './pages/AdminProductsPage/AdminProductsPage';
 import AdminHomePage from './pages/AdminHomePage/AdminHomePage';
 import AdminHeader from './component/AdminHeader/AdminHeader';
 
 const App = () => {
   const [adminIsLoged, setAdminIsLoged] = useState(false);
+  const [error, setError] = useState();
+
+  const adminUser = {
+    email: 'admin@adm.com',
+    password: '123',
+  };
 
   const loginStatus = (logInfo: any) => {
-    setAdminIsLoged(logInfo);
-    console.log(adminIsLoged);
+    if (adminUser.email === logInfo.email && adminUser.password === logInfo.password) {
+      setAdminIsLoged(true);
+      console.log(adminIsLoged);
+    } else {
+      alert('Username and/or password do not match.');
+    }
+  };
+
+  const logOut = (logOutInfo: any) => {
+    setAdminIsLoged(logOutInfo);
   };
 
   return (
@@ -30,8 +44,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/home" element={<HomePage />} />
-            <Route path="/products" element={<ProductPage />} />
-            <Route path="/products/:id" element={<DetailPage />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/product/:id" element={<DetailPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/login" element={<LoginPage loginStatus={loginStatus} />} />
@@ -40,7 +54,7 @@ const App = () => {
       )
         : (
           <>
-            <AdminHeader loginStatus={loginStatus} />
+            <AdminHeader logOut={logOut} />
             <Routes>
               <Route path="/admin/home" element={<AdminHomePage />} />
               <Route path="/admin/products" element={<AdminProductsPage />} />

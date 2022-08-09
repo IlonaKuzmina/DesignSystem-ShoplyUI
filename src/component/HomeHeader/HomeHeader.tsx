@@ -12,7 +12,12 @@ export const HomeHeader = () => {
             <h1 className="header__title">logitech g pro x superlight</h1>
             <p className="header__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulm nibh erat</p>
 
-            <Button padding="12px 37px" label="shop now" primary />
+            <Button
+              padding="12px 37px"
+              label="shop now"
+              primary
+              onClick={() => navigate('/products')}
+            />
           </div>
         </div>
         <div className="col-xs-12 col-sm-6 col-md-6">

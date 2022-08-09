@@ -1,3 +1,4 @@
+import { FC, ReactNode } from 'react';
 import './Button.scss';
 
 type ButtonProps = {
@@ -6,15 +7,17 @@ type ButtonProps = {
   padding: string,
   type?: 'gray',
   onClick?: () => void;
+  children?: ReactNode;
 }
 
-const Button = ({
+const Button: FC<ButtonProps> = ({
   padding,
   onClick,
   label,
   type,
   primary,
-}: ButtonProps) => {
+  children,
+}) => {
   const mode = primary ? 'text__button--primary' : 'text__button--secondary';
 
   return (
@@ -24,6 +27,7 @@ const Button = ({
       className={['text__button', `text__button--${type}`, mode].join(' ')}
     >
       {label}
+      {children}
     </button>
   );
 };

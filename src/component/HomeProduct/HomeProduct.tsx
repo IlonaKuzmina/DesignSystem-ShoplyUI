@@ -9,6 +9,7 @@ import HomeTitle from '../HomeTitle/HomeTitle';
 
 import './HomeProduct.scss';
 import ButtonWithIcon from '../ButtonWithIcon/ButtonWithIcon';
+import Button from '../Button/Button';
 
 const HomeProduct: FC = () => {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ const HomeProduct: FC = () => {
         </MediaQuery>
 
         <MediaQuery minWidth={951}>
-          {products && products.items.slice(0, 9).map(({ image, id, name }) => (
+          {products && products.items.slice(0, 8).map(({ image, id, name }) => (
             <ProductCard
               image={image}
               name={name}

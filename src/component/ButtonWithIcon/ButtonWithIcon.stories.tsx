@@ -21,32 +21,32 @@ export const Primary = Template.bind({});
 Primary.args = {
   primary: true,
   label: 'shop now',
-  icon: 'src/assets/icons/cart.svg',
+  icon: './assets/icons/arrow.svg',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   primary: false,
   label: 'shop now',
-  icon: 'src/assets/icons/cart.svg',
+  icon: './assets/icons/arrow.svg',
 };
 
 export const Gray = Template.bind({});
 Gray.args = {
   type: 'gray',
   label: 'shop now',
-  icon: 'src/assets/icons/cart.svg',
+  icon: './assets/icons/arrow.svg',
 };
 
 export const Icon = Template.bind({});
 Icon.args = {
   type: 'icon',
   label: 'shop now',
-  icon: 'src/assets/icons/cart.svg',
+  icon: './assets/icons/arrow.svg',
 };
 
 export const IconNoLable = Template.bind({});
 IconNoLable.args = {
   type: 'icon',
-  icon: 'src/assets/icons/cart.svg',
+  icon: './assets/icons/arrow.svg',
 };

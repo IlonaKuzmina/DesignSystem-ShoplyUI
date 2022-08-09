@@ -2,9 +2,8 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import './AdminBurgerNav.scss';
 
-const AdminBurgerNav = ({ loginStatus }: any) => {
+const AdminBurgerNav = ({ logOut }: any) => {
   const navigate = useNavigate();
-
   const data = false;
 
   return (
@@ -18,18 +17,9 @@ const AdminBurgerNav = ({ loginStatus }: any) => {
       </label>
 
       <ul className="menu">
-        {/* <div className="navigation__links--container">
-          <NavLink to="/admin/home" className="navigation__link">Home</NavLink>
-          /
-          <NavLink to="/admin/products" className="navigation__link">Products</NavLink>
-          /
-          <NavLink to="/home" className="navigation__link">Logout</NavLink>
-        </div> */}
-
         <li><NavLink to="/admin/home" className="navigation__link">Home</NavLink></li>
         <li><NavLink to="/admin/products" className="navigation__link">Products</NavLink></li>
-        {/* <li><NavLink to="/home" className="navigation__link">Logoutttt</NavLink></li> */}
-        <li><button type="submit" onClick={() => { loginStatus(data); navigate('/home'); }}>logout</button></li>
+        <li><button type="submit" onClick={() => { logOut(data); navigate('/home'); }}>logout</button></li>
 
       </ul>
     </section>

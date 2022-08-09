@@ -1,13 +1,26 @@
-import { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import Button from '../../component/Button/Button';
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './LoginPage.scss';
 
 const LoginPage = ({ loginStatus }: any) => {
-  const [admin, setAdmin] = useState('');
-  const navigate = useNavigate();
+  const adminUser = {
+    email: 'admin@admin.com',
+    password: 'password123',
+  };
 
-  const data = true;
+  const [user, setUser] = useState({ email: '', password: '' });
+  const navigate = useNavigate();
+  const focusInput = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    if (focusInput.current) {
+      focusInput.current.focus();
+    }
+  }, []);
+
+  const submitHandler = (e: any) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="login__header--wrapper">
@@ -20,25 +33,42 @@ const LoginPage = ({ loginStatus }: any) => {
 
         <div className="col-xs-12 col-sm-5 col-md-5">
           <div className="login__wrapper--left">
-            <form>
+            <form onSubmit={submitHandler}>
               <h1 className="login__title">login</h1>
-              <input className="login__name--input" type="text" placeholder=" " />
+              <input
+                className="login__name--input"
+                type="text"
+                placeholder=" "
+                onChange={(e) => setUser({ ...user, email: e.target.value })}
+                value={user.email}
+                ref={focusInput}
+              />
+              {(user.email === '' || user.email === adminUser.email)
+                ? '' : (<span>User name is incorect</span>)}
               <br />
-              <input className="login__password--input" type="password" placeholder=" " />
+
+              <input
+                className="login__password--input"
+                type="password"
+                placeholder=" "
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
+                value={user.password}
+                required
+              />
+              {(user.password === '' || user.password === adminUser.password)
+                ? '' : (<span>Password is incorect</span>)}
               <br />
-              <span>Forgot password?</span>
+
+              <span className="login__span--text">Forgot password?</span>
               <br />
+
               <button
                 className="login__button"
-                onClick={() => { loginStatus(data); navigate('/admin/home'); }}
+                onClick={() => { loginStatus(user); navigate('/admin/home'); }}
               >
                 Next
 
               </button>
-              {/* <br />
-              <NavLink to="/admin/home" className="navigation__link">Admin home</NavLink>
-              <br />
-              <NavLink to="/admin/products" className="navigation__link">Admin products</NavLink> */}
             </form>
 
           </div>

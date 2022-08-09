@@ -1,0 +1,12 @@
+.products__container {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.product__cards--container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 30px;
+  column-gap: 30px;
+}

@@ -52,3 +52,15 @@
   padding: 14px 0;
   margin: 40px 0;
 }
+
+.disabled {
+
+}
+
+.login__span--text{
+  text-decoration: underline;
+  cursor: pointer;
+  &:hover{
+    color:#8e8e8e;
+  }
+}

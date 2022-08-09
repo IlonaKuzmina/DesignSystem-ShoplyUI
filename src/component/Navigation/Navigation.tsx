@@ -1,9 +1,12 @@
+import { useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { RootState } from '../../reducer/store';
 import BurgerNav from '../BurgerNav/BurgerNav';
 import Button from '../Button/Button';
 import './Navigation.scss';
 
 export const Navigation = () => {
+  const products = useSelector(({ product }: RootState) => product);
   const navigate = useNavigate();
 
   return (
@@ -25,7 +28,7 @@ export const Navigation = () => {
           <div className="cart__button--wrapper">
             <button className="cart__button" onClick={() => { navigate('/cart'); }}>
               <img className="cart__button--image" src="./assets/icons/cart.svg" alt="Cart" />
-              <span className="cart__button--counter">0</span>
+              <span className="cart__button--counter">{products.cartTotal}</span>
             </button>
           </div>
 

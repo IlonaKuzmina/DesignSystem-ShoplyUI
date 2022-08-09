@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addToCart } from '../../reducer/productReducer/productReducer';
 import { AppDispatch } from '../../reducer/store';
-import Button from '../Button/Button';
 import ButtonWithIcon from '../ButtonWithIcon/ButtonWithIcon';
 import './ProductCard.scss';
 
@@ -29,7 +28,7 @@ export const ProductCard: FC<ProductCardProps> = ({
       <div className="card__button--container">
         <button
           className="product__button--customisation"
-          onClick={() => { navigate(`/products/${id}`); }}
+          onClick={() => { navigate(`/product/${id}`); }}
         >
           detail
 
