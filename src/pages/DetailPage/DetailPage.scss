@@ -15,16 +15,24 @@
   border: #f5f7fb;
   margin-right: 14px;
   cursor: pointer;
-  
-  &:hover{
+
+  &:hover {
     background-color: #b4b6b9;
   }
+}
+
+.product__left--container {
+  margin-bottom: 30px;
+  margin-right: 60px;
+  max-height: 660px;
 }
 
 .product__main--image {
   width: 100%;
   height: 100%;
   background-color: #9a9292;
+  object-fit: cover;
+  overflow: hidden;
 }
 
 .product__tittle {
@@ -50,11 +58,7 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
-}
-
-.product__left--container {
-  margin-bottom: 30px;
-  margin-right: 60px;
+  justify-content: space-between;
 }
 
 .testing__order {

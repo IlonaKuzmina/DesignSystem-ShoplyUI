@@ -28,7 +28,9 @@ export const ProductCard: FC<ProductCardProps> = ({
       <div className="card__button--container">
         <button
           className="product__button--customisation"
-          onClick={() => { navigate(`/product/${id}`); }}
+          onClick={() => {
+            navigate(`/product/${id}`);
+          }}
         >
           detail
 

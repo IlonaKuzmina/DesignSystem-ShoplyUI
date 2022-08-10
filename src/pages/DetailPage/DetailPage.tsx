@@ -22,14 +22,16 @@ const DetailPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const product = getProduct(Number(id));
-    if (product) {
-      setCurrentProduct(product);
-    } else {
-      navigate('/products');
-    }
-    window.scrollTo(0, 0);
-  }, []);
+    const activeProduct = products.items.find((p) => p.id === Number(id));
+    setCurrentProduct(activeProduct);
+    // const product = getProduct(Number(id));
+    // if (product) {
+    //   setCurrentProduct(product);
+    // } else {
+    //   navigate('/products');
+    // }
+    // window.scrollTo(0, 0);
+  }, [products]);
 
   // const getProductCount = (id) => {
   //   products.items.map((i) => {
@@ -45,8 +47,7 @@ const DetailPage = () => {
       <NavigationLine link="Product" />
       <div className="product__wrapper">
         <div className="product__left--container">
-          <img className="product__main--image" src="./assets/images/product_14.png" alt="Title" />
-          {/* <img className="product__main--image" src={currentProduct?.image} alt={currentProduct?.subcategory} /> */}
+          <img className="product__main--image" src={currentProduct?.image} alt="Title" />
         </div>
 
         <div className="product__right--container">
@@ -69,14 +70,15 @@ const DetailPage = () => {
             </p>
             <div className="product__button--block">
               {' '}
-              <button className="count__btn" onClick={() => { dispatch(removeCount(id)); }}>-</button>
+              <button className="count__btn" onClick={() => { dispatch(removeCount(Number(id))); }}>-</button>
+              {/* <button className="count__btn">{products.activeItem.count}</button> */}
               <button className="count__btn">{currentProduct?.count}</button>
-              <button className="count__btn" onClick={() => { dispatch(addCount(id)); }}>+</button>
+              <button className="count__btn" onClick={() => { dispatch(addCount(Number(id))); }}>+</button>
               <Button
                 padding="9px 16px"
                 label="Add to cart"
                 primary
-                onClick={() => { dispatch(addToCart(id)); dispatch(countAllInCart()); }}
+                onClick={() => { dispatch(addToCart(Number(id))); dispatch(countAllInCart()); }}
               />
             </div>
           </div>
@@ -85,7 +87,7 @@ const DetailPage = () => {
             <img className="addition__image" src={currentProduct?.image} alt="bilde" />
             <img className="addition__image" src={currentProduct?.image} alt="bilde" />
             <img className="addition__image" src={currentProduct?.image} alt="bilde" />
-            <img className="addition__image" src="./assets/images/girl.png" alt="bilde" />
+            <img className="addition__image" src={currentProduct?.image} alt="bilde" />
           </div>
         </div>
       </div>
