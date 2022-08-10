@@ -4,6 +4,7 @@ import Button from '../Button/Button';
 
 export const HomeHeader = () => {
   const navigate = useNavigate();
+
   return (
     <div className="home__header--wrapper">
       <div className="row center-xs middle-sm">

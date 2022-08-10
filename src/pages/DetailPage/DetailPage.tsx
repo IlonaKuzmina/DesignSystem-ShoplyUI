@@ -1,46 +1,27 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom';
-import Button from '../../component/Button/Button';
-import NavigationLine from '../../component/NavigationLine/NavigationLine';
-import { ProductData, getProduct } from '../../data/productData';
+import { useParams } from 'react-router-dom';
 import {
   addCount, addToCart, countAllInCart, removeCount,
 } from '../../reducer/productReducer/productReducer';
 import { AppDispatch, RootState } from '../../reducer/store';
+import { ProductData } from '../../data/productData';
+import Button from '../../component/Button/Button';
+import NavigationLine from '../../component/NavigationLine/NavigationLine';
 import './DetailPage.scss';
-
-// export type ProductItemProps = {
-//   count: number;
-// }
 
 const DetailPage = () => {
   const [currentProduct, setCurrentProduct] = useState<ProductData>();
   const products = useSelector(({ product }: RootState) => product);
   const dispatch = useDispatch<AppDispatch>();
   const { id } = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const activeProduct = products.items.find((p) => p.id === Number(id));
     setCurrentProduct(activeProduct);
-    // const product = getProduct(Number(id));
-    // if (product) {
-    //   setCurrentProduct(product);
-    // } else {
-    //   navigate('/products');
-    // }
-    // window.scrollTo(0, 0);
   }, [products]);
 
-  // const getProductCount = (id) => {
-  //   products.items.map((i) => {
-  //     if (id === i.id) {
-  //       i.count;
-  //     }
-  //     return i;
-  //   });
-  // };
+  useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
     <>
@@ -70,10 +51,23 @@ const DetailPage = () => {
             </p>
             <div className="product__button--block">
               {' '}
-              <button className="count__btn" onClick={() => { dispatch(removeCount(Number(id))); }}>-</button>
-              {/* <button className="count__btn">{products.activeItem.count}</button> */}
-              <button className="count__btn">{currentProduct?.count}</button>
-              <button className="count__btn" onClick={() => { dispatch(addCount(Number(id))); }}>+</button>
+              <button
+                disabled={products.addToCartCounter === 1}
+                className="count__btn"
+                onClick={() => { dispatch(removeCount(Number(id))); }}
+              >
+                -
+
+              </button>
+              <button className="count__btn">{products.addToCartCounter}</button>
+              <button
+                disabled={products.addToCartCounter === currentProduct?.inStock}
+                className="count__btn"
+                onClick={() => { dispatch(addCount(Number(id))); }}
+              >
+                +
+
+              </button>
               <Button
                 padding="9px 16px"
                 label="Add to cart"

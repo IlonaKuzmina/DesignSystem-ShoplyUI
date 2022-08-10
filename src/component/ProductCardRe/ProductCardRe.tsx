@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { addCount, addToCart } from '../../reducer/productReducer/productReducer';
 import { AppDispatch } from '../../reducer/store';
 import ButtonWithIcon from '../ButtonWithIcon/ButtonWithIcon';
-import './ProductCard.scss';
+import './ProductCardRe.scss';
 
 type ProductCardProps = {
   id?: number,

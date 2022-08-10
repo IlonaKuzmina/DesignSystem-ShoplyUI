@@ -7,6 +7,7 @@ export const productReducer = createSlice({
     items: <ProductData[]>productsData,
     cartTotal: 0,
     cartTotalSum: 0,
+    addToCartCounter: 1,
   },
 
   reducers: {
@@ -14,15 +15,8 @@ export const productReducer = createSlice({
       state.items = state.items.map((i) => {
         if (i.id === action.payload) {
           i.inCart = true;
-        }
-        return i;
-      });
-    },
-
-    removeCount(state, action) {
-      state.items = state.items.map((i) => {
-        if (i.id === action.payload) {
-          i.count -= 1;
+          i.count = state.addToCartCounter;
+          state.addToCartCounter = 1;
         }
         return i;
       });
@@ -31,7 +25,34 @@ export const productReducer = createSlice({
     addCount(state, action) {
       state.items = state.items.map((i) => {
         if (i.id === action.payload) {
+          state.addToCartCounter += 1;
+        }
+        return i;
+      });
+    },
+
+    removeCount(state, action) {
+      state.items = state.items.map((i) => {
+        if (i.id === action.payload) {
+          state.addToCartCounter -= 1;
+        }
+        return i;
+      });
+    },
+
+    addCountInCart(state, action) {
+      state.items = state.items.map((i) => {
+        if (i.id === action.payload) {
           i.count += 1;
+        }
+        return i;
+      });
+    },
+
+    removeCountInCart(state, action) {
+      state.items = state.items.map((i) => {
+        if (i.id === action.payload) {
+          i.count -= 1;
         }
         return i;
       });
@@ -72,6 +93,8 @@ export const {
   countAllInCart,
   removeFromCart,
   countTotalInCart,
+  addCountInCart,
+  removeCountInCart,
 } = productReducer.actions;
 
 export default productReducer.reducer;

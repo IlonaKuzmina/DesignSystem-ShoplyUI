@@ -12,7 +12,7 @@
   grid-template-columns: auto auto auto auto;
   gap: 40px;
   width: 100%;
-  height: 100%;
+  height: 1000px;
 }
 
 @media screen and (max-width: 950px) {
@@ -24,8 +24,7 @@
   .product__card--container {
     grid-template-columns: auto auto auto;
     gap: 30px;
-    width: 100%;
-    height: 100%;
+    height: 800px;
   }
 }
 
@@ -33,12 +32,13 @@
   .home__product--container {
     padding: 20px;
     justify-items: center;
-   min-width: 300px;
+    min-width: 300px;
   }
 
   .product__card--container {
     grid-template-columns: auto auto;
     gap: 20px;
     justify-items: center;
+    height: 100%;
   }
 }
