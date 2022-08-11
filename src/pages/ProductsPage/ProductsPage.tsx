@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../component/Button/Button';
-import ButtonWithIcon from '../../component/ButtonWithIcon/ButtonWithIcon';
 import NavigationLine from '../../component/NavigationLine/NavigationLine';
-import ProductCard from '../../component/ProductCard/ProductCard';
-import ProductCardRe from '../../component/ProductCardRe/ProductCardRe';
-import { addCount, addToCart } from '../../reducer/productReducer/productReducer';
+import {
+  addCount, addToCart, searchByName, sortedByName,
+} from '../../reducer/productReducer/productReducer';
 import { AppDispatch, RootState } from '../../reducer/store';
 import './ProductsPage.scss';
 
@@ -16,12 +15,14 @@ const ProductPage = () => {
   const [visibleCategory, setVisibleCategory] = useState(2);
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  const [sortState, setSortState] = useState('none');
   const [searchState, setSearchState] = useState('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // useEffect(() => {
+  // }, [searchState]);
 
   const showMoreItems = () => {
     setVisibleProducts((prevVisible) => prevVisible + 4);
@@ -29,14 +30,6 @@ const ProductPage = () => {
 
   const showMoreCategory = () => {
     setVisibleCategory((prevVisible) => prevVisible + 10);
-  };
-
-  const sortingByName = (selectedValue: string) => {
-    setSortState(sortState);
-  };
-
-  const searchByInput = (search: string) => {
-
   };
 
   return (
@@ -73,13 +66,13 @@ const ProductPage = () => {
         </div>
 
         <div className="right__side--container">
-
           <input
             className="search__input"
             type="text"
-            placeholder="Search.."
-            onChange={(event) => setSearchState(event.target.value)}
+            placeholder="Search by subcategory..."
+            onChange={(event) => { setSearchState(event.target.value); dispatch(searchByName(event.target.value)); }}
           />
+
           <div className="sorting__line">
             <p>
               Search results for
@@ -92,18 +85,18 @@ const ProductPage = () => {
               <select
                 name="sorting"
                 id="sorting"
-                defaultValue="DEFAULT"
-                onChange={(event) => setSortState(event.target.value)}
+                onChange={(event) => { dispatch(sortedByName(event.target.value)); }}
               >
-                <option value="a">Name (A-B)</option>
-                <option value="b">Name (B-A)</option>
+                <option value="default">Select</option>
+                <option value="asc">Name (A-B)</option>
+                <option value="desc">Name (B-A)</option>
               </select>
 
             </label>
           </div>
 
           <div className="products__cards--container">
-            {products && products.items.slice(0, visibleProducts).sort().map(({
+            {products && products.items.slice(0, visibleProducts).map(({
               image, id, name, price,
             }) => (
               <div className="product__card--wrapper" key={id}>

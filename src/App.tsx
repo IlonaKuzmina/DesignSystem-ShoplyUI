@@ -13,6 +13,7 @@ import ProductsPage from './pages/ProductsPage/ProductsPage';
 import AdminProductsPage from './pages/AdminProductsPage/AdminProductsPage';
 import AdminHomePage from './pages/AdminHomePage/AdminHomePage';
 import AdminHeader from './component/AdminHeader/AdminHeader';
+import Page404 from './pages/Page404/Page404';
 
 const App = () => {
   const [adminIsLoged, setAdminIsLoged] = useState(false);
@@ -49,6 +50,7 @@ const App = () => {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/login" element={<LoginPage loginStatus={loginStatus} />} />
+            <Route path="*" element={<Page404 />} />
           </Routes>
         </>
       )

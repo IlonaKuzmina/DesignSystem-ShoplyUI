@@ -40,6 +40,7 @@
   object-fit:fill;
   overflow: hidden;
   border-radius: 4px;
+  object-fit: cover;
 }
 
 .product__tittle {
@@ -128,12 +129,13 @@
   .product__images--container {
     order: 0;
     margin-top: 30px;
-    height: 125px;
+    height: 100px;
   }
 
   .addition__image {
-    max-width: none;
+    // max-width: none;
     margin: 5px;
+    object-fit: cover;
   }
 
   .product__main--image {
@@ -151,7 +153,7 @@
 
 @media screen and (max-width: 360px) {
   .product__images--container {
-    height: 55px;
+    height: 60px;
     margin-top: 10px;
   }
 
@@ -164,6 +166,7 @@
 
   .addition__image {
     margin: 5px;
+    object-fit: cover;
   }
 
   .product__wrapper {

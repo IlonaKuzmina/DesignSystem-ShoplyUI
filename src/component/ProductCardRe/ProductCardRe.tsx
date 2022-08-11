@@ -37,7 +37,7 @@ export const ProductCard: FC<ProductCardProps> = ({
           type="icon"
           onClick={() => { dispatch(addToCart(id)); dispatch(addCount(id)); }}
           icon="./assets/icons/cart.svg"
-          padding="5px 13px"
+          padding="5px 5px"
         />
       </div>
     </div>

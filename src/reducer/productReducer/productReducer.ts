@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { info } from 'console';
 import productsData, { ProductData } from '../../data/productData';
 
 export const productReducer = createSlice({
@@ -83,6 +84,27 @@ export const productReducer = createSlice({
       const priceTotal = price.reduce((acc, items) => acc + items);
       state.cartTotalSum = priceTotal;
     },
+
+    sortedByName(state, action) {
+      const selectedOption = action.payload;
+
+      if (selectedOption === 'asc') {
+        state.items.sort((a: any, b: any) => a.name.localeCompare(b.name));
+      } else if (selectedOption === 'desc') {
+        state.items.sort((a: any, b: any) => b.name.localeCompare(a.name));
+      }
+      return state;
+    },
+
+    searchByName(state, action) {
+      const searchValue = action.payload.toLowerCase();
+      const filteredProducts = state.items.filter((prod) => prod.subcategory.toLowerCase().includes(searchValue));
+
+      if (action.payload) {
+        state.items = filteredProducts;
+      }
+      return state;
+    },
   },
 });
 
@@ -95,6 +117,8 @@ export const {
   countTotalInCart,
   addCountInCart,
   removeCountInCart,
+  sortedByName,
+  searchByName,
 } = productReducer.actions;
 
 export default productReducer.reducer;
