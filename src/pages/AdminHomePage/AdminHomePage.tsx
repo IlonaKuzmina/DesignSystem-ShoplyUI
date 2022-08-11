@@ -12,7 +12,7 @@ const AdminHomePage = ({ loginStatus }: any) => {
 
   return (
     <div className="admin__home--container">
-      Here is my admin home page
+      <h1 className="admin__home--title">You are logged in to the admin page! Home section!</h1>
       <AdminNavigation loginStatuss={loginStatuss} />
     </div>
   );

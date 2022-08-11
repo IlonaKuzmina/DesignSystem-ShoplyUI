@@ -146,7 +146,7 @@ const productsData: ProductData[] = [
   },
   {
     id: 12,
-    name: 'Twisted Halo Diamond',
+    name: 'Twisted Halo Dia',
     specification: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh erat',
     price: 1500,
     image: '/assets/images/ring2.png',
@@ -170,7 +170,7 @@ const productsData: ProductData[] = [
   },
   {
     id: 14,
-    name: 'Petite Halo Diamond',
+    name: 'Petite Halo Diam',
     specification: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh erat',
     price: 1500,
     image: '/assets/images/ring.png',

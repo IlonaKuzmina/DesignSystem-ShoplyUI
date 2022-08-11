@@ -86,7 +86,14 @@
   justify-content: flex-end;
   background-position: center;
   background-size: cover;
-  min-height: 300px;
+  max-height: 308px;
+  min-height: 250px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: (15px 15px 15px rgba(0, 0, 0, 0.25));
+  }
 }
 
 .button__wrapper {

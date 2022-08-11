@@ -15,6 +15,7 @@ const DetailPage = () => {
   const products = useSelector(({ product }: RootState) => product);
   const dispatch = useDispatch<AppDispatch>();
   const { id } = useParams();
+  const [inStock, setInStock] = useState();
 
   useEffect(() => {
     const activeProduct = products.items.find((p) => p.id === Number(id));

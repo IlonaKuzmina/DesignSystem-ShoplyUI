@@ -20,8 +20,8 @@ const App = () => {
   const [error, setError] = useState();
 
   const adminUser = {
-    email: 'admin@adm.com',
-    password: '123',
+    email: '',
+    password: '',
   };
 
   const loginStatus = (logInfo: any) => {

@@ -1,5 +1,32 @@
 .admin__home--container {
-  margin-top: 150px;
-  background-color: lightcoral;
-  height: 100%;
+  margin: 150px auto;
+  text-align: center;
+}
+
+.admin__home--title {
+  margin: 0 150px;
+}
+
+@media (max-width: 770px) {
+  .admin__home--title {
+    font-size: 26px;
+    margin: 0 50px;
+  }
+
+  .admin__home--container {
+    margin: 100px auto;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .admin__home--title {
+    font-size: 19px;
+    margin: 0 30px;
+  }
+
+  .admin__home--container {
+    margin: 80px auto;
+    text-align: center;
+  }
 }

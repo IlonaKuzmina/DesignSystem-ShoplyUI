@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from '../../component/Button/Button';
 import NavigationLine from '../../component/NavigationLine/NavigationLine';
 import {
-  addCount, addToCart, searchByName, sortedByName,
+  addCount, addCountInCart, addToCart, countAllInCart, searchByName, sortedByName,
 } from '../../reducer/productReducer/productReducer';
 import { AppDispatch, RootState } from '../../reducer/store';
 import './ProductsPage.scss';
@@ -20,9 +20,6 @@ const ProductPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  // useEffect(() => {
-  // }, [searchState]);
 
   const showMoreItems = () => {
     setVisibleProducts((prevVisible) => prevVisible + 4);
@@ -117,7 +114,7 @@ const ProductPage = () => {
                     </button>
                     <button
                       className="products__button--cart"
-                      onClick={() => { dispatch(addToCart(id)); dispatch(addCount(id)); }}
+                      onClick={() => { dispatch(addToCart(Number(id))); dispatch(countAllInCart()); }}
                     >
                       <img className="icon__button--cart" src="/assets/icons/cart.svg" alt="Cart" />
 
@@ -138,7 +135,12 @@ const ProductPage = () => {
           </div>
 
           <div className="more__button--wrapper">
-            <Button onClick={showMoreItems} padding="13px 16px" label="load more" primary />
+            <Button
+              onClick={showMoreItems}
+              padding="13px 16px"
+              label="load more"
+              primary
+            />
           </div>
         </div>
       </div>

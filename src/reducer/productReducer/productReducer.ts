@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { info } from 'console';
 import productsData, { ProductData } from '../../data/productData';
 
 export const productReducer = createSlice({
@@ -12,6 +11,7 @@ export const productReducer = createSlice({
   },
 
   reducers: {
+
     addToCart(state, action) {
       state.items = state.items.map((i) => {
         if (i.id === action.payload) {
