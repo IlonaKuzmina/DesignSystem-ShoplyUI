@@ -20,14 +20,13 @@ const App = () => {
   const [error, setError] = useState();
 
   const adminUser = {
-    email: '',
-    password: '',
+    email: 'admin@adm.com',
+    password: '123',
   };
 
   const loginStatus = (logInfo: any) => {
     if (adminUser.email === logInfo.email && adminUser.password === logInfo.password) {
       setAdminIsLoged(true);
-      console.log(adminIsLoged);
     } else {
       alert('Username and/or password do not match.');
     }

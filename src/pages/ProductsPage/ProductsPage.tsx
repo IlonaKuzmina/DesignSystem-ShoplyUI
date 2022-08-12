@@ -1,66 +1,44 @@
 import React, { useEffect, useState } from 'react';
+import MediaQuery from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../component/Button/Button';
 import NavigationLine from '../../component/NavigationLine/NavigationLine';
+import SortingLineBig from '../../component/SortingLineBig/SortingLineBig';
+import SortingLineSmall from '../../component/SortingLineSmall/SortingLineSmall';
 import {
-  addCount, addCountInCart, addToCart, countAllInCart, searchByName, sortedByName,
+  addToCart, countAllInCart, searchByName, sortedByName,
 } from '../../reducer/productReducer/productReducer';
 import { AppDispatch, RootState } from '../../reducer/store';
 import './ProductsPage.scss';
+import ModalFilterBlock from '../../component/ModalFilterBlock/ModalFilterBlock';
+import ProductsMainFilterBlock from '../../component/ProductsMainFilterBlock/ProductsMainFilterBlock';
 
 const ProductPage = () => {
   const products = useSelector(({ product }: RootState) => product);
   const [visibleProducts, setVisibleProducts] = useState(8);
-  const [visibleCategory, setVisibleCategory] = useState(2);
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const [searchState, setSearchState] = useState('');
+  const [filterOpen, setFilterOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [filterOpen]);
 
   const showMoreItems = () => {
     setVisibleProducts((prevVisible) => prevVisible + 4);
   };
 
-  const showMoreCategory = () => {
-    setVisibleCategory((prevVisible) => prevVisible + 10);
-  };
-
   return (
     <>
       <NavigationLine link="products" />
-      <div className="products__container">
-
-        <div className="left__side--container">
-          <h2 className="left__side--title">Filter</h2>
-
-          <div>
-            <h4 className="category__title">Product category</h4>
-            <div className="category__wrapper">
-              {products && products.items.slice(0, visibleCategory).map(({ category, id }) => (
-                <label className="category__label" key={id} htmlFor={category}>
-                  {' '}
-                  {category}
-                  <input type="checkbox" />
-                </label>
-              ))}
-
-              <button className="others__button" onClick={() => showMoreCategory()}>Others</button>
-            </div>
-
-          </div>
-
-          <div>
-            <h4 className="range__title">Price range</h4>
-            <input type="text" placeholder="min" />
-            <input type="text" placeholder="max" />
-            <Button label="set price" primary padding="5px 15px" />
-          </div>
-          <Button label="clear filter" padding="5px 15px" />
-        </div>
+      <div className="products__page--container">
+        {filterOpen ? (
+          <ModalFilterBlock closeModal={() => { setFilterOpen(false); }} />
+        ) : (
+          <ProductsMainFilterBlock />
+        )}
 
         <div className="right__side--container">
           <input
@@ -70,27 +48,13 @@ const ProductPage = () => {
             onChange={(event) => { setSearchState(event.target.value); dispatch(searchByName(event.target.value)); }}
           />
 
-          <div className="sorting__line">
-            <p>
-              Search results for
-              {' '}
-              {searchState}
-            </p>
-            <label htmlFor="sorting">
-              Sort by:
-              {' '}
-              <select
-                name="sorting"
-                id="sorting"
-                onChange={(event) => { dispatch(sortedByName(event.target.value)); }}
-              >
-                <option value="default">Select</option>
-                <option value="asc">Name (A-B)</option>
-                <option value="desc">Name (B-A)</option>
-              </select>
+          <MediaQuery maxWidth={600}>
+            <SortingLineSmall onClick={() => { setFilterOpen(true); }} />
+          </MediaQuery>
 
-            </label>
-          </div>
+          <MediaQuery minWidth={601}>
+            <SortingLineBig searchState={searchState} />
+          </MediaQuery>
 
           <div className="products__cards--container">
             {products && products.items.slice(0, visibleProducts).map(({
@@ -144,7 +108,6 @@ const ProductPage = () => {
           </div>
         </div>
       </div>
-
     </>
   );
 };

@@ -3,7 +3,6 @@ import MediaQuery from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../reducer/store';
-import ProductCard from '../ProductCard/ProductCard';
 import HomeTitle from '../HomeTitle/HomeTitle';
 import './HomeProduct.scss';
 import ButtonWithIcon from '../ButtonWithIcon/ButtonWithIcon';

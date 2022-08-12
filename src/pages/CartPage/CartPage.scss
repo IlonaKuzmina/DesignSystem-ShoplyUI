@@ -40,7 +40,7 @@
 
 @media screen and (max-width: 770px) {
   .subtotal__container {
-    margin: 98px 20px 52px;
+    margin: 50px auto;
   }
 
   .checkout__button--container {
@@ -57,12 +57,11 @@
   .subtotal__container {
     max-width: 326px;
     padding: 22px 32px;
-    margin-top: 54px;
-    margin: 54px 20px 32px;
+    margin: 30px 20px 32px;
   }
 
   .checkout__button--container {
-    margin: 30px 20px 0px;
+    margin: 30px 20px;
   }
 
   .cart__button--wrapper {

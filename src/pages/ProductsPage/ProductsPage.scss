@@ -1,69 +1,12 @@
-.products__container {
+.products__page--container {
   display: grid;
   grid-template-columns: 25% 75%;
   width: 87%;
   margin: 0 auto;
 }
 
-.left__side--container {
-}
-
-.left__side--title {
-  font-weight: 500;
-  font-size: 26px;
-  line-height: 132%;
-  letter-spacing: 0.015em;
-  color: #000000;
-  margin-bottom: 63px;
-}
-
-.category__title,
-.range__title {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 132%;
-  letter-spacing: 0.015em;
-  color: #000000;
-  margin-bottom: 20px;
-}
-
-.category__wrapper {
-  display: flex;
-  flex-direction: column;
-  font-size: 16px;
-  line-height: 132%;
-  letter-spacing: 0.015em;
-  color: #616467;
-}
-
-.category__label {
-  margin-bottom: 15px;
-  width: 100%;
-}
-
-.others__button {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  font-size: 16px;
-  line-height: 132%;
-  letter-spacing: 0.015em;
-  color: #616467;
-  margin: 0 auto;
-}
-
 .right__side--container {
-}
-
-.sorting__line {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 20px auto;
-  font-size: 16px;
-  line-height: 132%;
-  letter-spacing: 0.015em;
-  color: #000000;
+  margin-left: 40px;
 }
 
 .products__cards--container {
@@ -190,27 +133,38 @@
   .products__button--cart {
     padding: 2px 5px;
   }
+
+  .search__input::placeholder {
+    background-position: 20px;
+    font-size: 16px;
+  }
 }
 
-@media screen and (max-width: 470px) {
+@media screen and (max-width: 600px) {
   .products__cards--container {
     grid-template-columns: auto auto;
     row-gap: 60px;
     column-gap: 16px;
     margin-bottom: 80px;
   }
+
   .product__info {
     display: flex;
     flex-wrap: wrap;
   }
 
-  .left__side--container {
-    display: none;
+  .search__input::placeholder {
+    background: url(./../../../public/assets/icons/search_4.svg);
+    background-repeat: no-repeat;
+    background-position: 10px;
+    font-size: 14px;
   }
 
-  .products__container {
+  .products__page--container {
     display: flex;
-    justify-content: center;
+    align-content: stretch;
+    flex-wrap: wrap;
+    flex-direction: column;
   }
 
   .card {
@@ -229,5 +183,9 @@
 
   .products__button--cart {
     padding: 2px 5px;
+  }
+
+  .right__side--container {
+    margin: 0 auto;
   }
 }
