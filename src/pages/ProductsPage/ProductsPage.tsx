@@ -23,13 +23,11 @@ const ProductPage = () => {
 
   const [productList, setProductList] = useState<ProductData[]>();
 
-  const [filteredData, setFilteredData] = useState({
+  const [filter, setFilter] = useState({
     category: '',
     minPrice: 0,
     maxPrice: 5000,
   });
-
-  useEffect(() => { }, [filteredData]);
 
   const showMoreItems = () => {
     setVisibleProducts((prevVisible) => prevVisible + 4);
@@ -37,38 +35,55 @@ const ProductPage = () => {
 
   const getFilteredAndSortedProductsList = () => {
     const newProdList = products.items;
-    if (filteredData.category === '') {
+    if (filter.category === '') {
       setProductList(newProdList);
     } else {
       setProductList(newProdList.filter(({ category, price }) => category
-      === filteredData.category
-      && price >= filteredData.minPrice
-      && price <= filteredData.maxPrice));
+        === filter.category
+        && price >= filter.minPrice
+          && price <= filter.maxPrice));
     }
   };
 
-  const getNewPriceRange = (min:number, max:number) => {
-    setFilteredData({ ...filteredData, minPrice: min, maxPrice: max });
+  const updateMinPrice = (min: string) => {
+    const minPri = Number(min);
+    setFilter({ ...filter, minPrice: minPri });
   };
 
-  const getChekedCategory = (cat:string) => {
-    setFilteredData({ ...filteredData, category: cat });
+  const updateMaxPrice = (max: string) => {
+    const maxPri = Number(max);
+    setFilter({ ...filter, maxPrice: maxPri });
+  };
+
+  const updateChekedCategory = (cat: any) => {
+    setFilter({ ...filter, category: cat });
   };
 
   const clearFilteredValues = () => {
-    setFilteredData({ minPrice: 0, maxPrice: 5000, category: '' });
+    setFilter({ minPrice: 0, maxPrice: 5000, category: '' });
   };
 
-  useEffect(() => { getFilteredAndSortedProductsList(); }, [filteredData]);
+  useEffect(() => { getFilteredAndSortedProductsList(); }, [filter]);
 
   return (
     <>
       <NavigationLine link="products" />
       <div className="products__page--container">
         {filterOpen ? (
-          <ModalFilterBlock closeModal={() => { setFilterOpen(false); }} />
+          <ModalFilterBlock
+            closeModal={() => { setFilterOpen(false); }}
+            clearFilteredValues={clearFilteredValues}
+            updateChekedCategory={updateChekedCategory}
+            updateMinPrice={updateMinPrice}
+            updateMaxPrice={updateMaxPrice}
+          />
         ) : (
-          <ProductsMainFilterBlock clearFilteredValues={clearFilteredValues} />
+          <ProductsMainFilterBlock
+            clearFilteredValues={clearFilteredValues}
+            updateChekedCategory={updateChekedCategory}
+            updateMinPrice={updateMinPrice}
+            updateMaxPrice={updateMaxPrice}
+          />
         )}
 
         <div className="right__side--container">

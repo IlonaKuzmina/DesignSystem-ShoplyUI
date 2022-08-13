@@ -39,6 +39,47 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
+  width: 90%;
+}
+
+.category__radio,
+.category__label {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.category__label {
+  margin-top: 0.1em;
+}
+
+.category__radio[type="radio"] {
+  height: 15px;
+  width: 15px;
+  margin-left: 20px;
+}
+
+.category__radio {
+  appearance: none;
+  border: 1px solid #fff;
+  background-color: #e8e8e8;
+  border-radius: 4px;
+}
+
+.category__radio:focus-visible {
+  outline-offset: 0;
+}
+
+#box-shadow {
+  box-shadow: 0 0 0 1px #999;
+}
+
+#box-shadow:checked {
+  box-shadow: 0 0 0 1px #211f1c;
+  background-color: #211f1c;
+  border-width: 60%;
 }
 
 .category__label {

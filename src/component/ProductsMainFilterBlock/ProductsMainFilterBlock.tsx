@@ -1,40 +1,31 @@
 import React, {
-  FC, ReactNode, useEffect, useState,
+  FC, useState,
 } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../reducer/store';
 import './ProductsMainFilterBlock.scss';
 
 type ProductsMainFilterBlockProps = {
-  children?: ReactNode;
   clearFilteredValues: () => void;
+  updateChekedCategory: (category: string) => void;
+  updateMinPrice: (min: string) => void;
+  updateMaxPrice: (max: string) => void;
 }
 
-const ProductsMainFilterBlock: FC<ProductsMainFilterBlockProps> = ({ children, clearFilteredValues }) => {
+const ProductsMainFilterBlock: FC<ProductsMainFilterBlockProps> = ({
+  clearFilteredValues, updateChekedCategory, updateMinPrice, updateMaxPrice,
+}) => {
   const products = useSelector(({ product }: RootState) => product);
   const [visibleCategory, setVisibleCategory] = useState(2);
   const [minP, setMinP] = useState('');
   const [maxP, setMaxP] = useState('');
-  const [filteredData, setFilteredData] = useState({
-    category: '',
-    minPrice: '',
-    maxPrice: '',
-  });
-
-  useEffect(() => { }, []);
 
   const showOthersCategory = () => {
     setVisibleCategory((prevVisible) => prevVisible + 5);
   };
 
-  // const clearFilteredValues = () => {
-  //   setFilteredData({ minPrice: '', maxPrice: '', category: '' });
-  // };
-
   return (
-
     <div className="main__filter--container">
-
       <div className="row center-xs">
         <div className="col-xs-10">
           <div className="main__title--wrapper">
@@ -52,15 +43,17 @@ const ProductsMainFilterBlock: FC<ProductsMainFilterBlockProps> = ({ children, c
                 .filter(({ category }, index, a) => a.findIndex((e) => category === e.category) === index)
                 .slice(0, visibleCategory)
                 .map(({ category, id }) => (
-                  <label className="category__label" key={id} htmlFor={category}>
+                  <label htmlFor={category} className="category__label" key={id}>
                     {' '}
                     {category}
                     <input
+                      id="box-shadow"
+                      className="category__radio"
                       key={id}
-                      type="checkbox"
-                      name={category}
+                      type="radio"
+                      name="category"
                       value={category}
-                      onChange={(e) => { setFilteredData({ ...filteredData, category: e.target.value }); }}
+                      onChange={(e) => { updateChekedCategory(e.target.value); }}
                     />
                   </label>
                 ))}
@@ -96,7 +89,7 @@ const ProductsMainFilterBlock: FC<ProductsMainFilterBlockProps> = ({ children, c
 
             <button
               className="main__button--set"
-              onClick={() => { setFilteredData({ ...filteredData, minPrice: minP, maxPrice: maxP }); }}
+              onClick={() => { updateMinPrice(minP); updateMaxPrice(maxP); }}
             >
               Set price
 
@@ -106,7 +99,6 @@ const ProductsMainFilterBlock: FC<ProductsMainFilterBlockProps> = ({ children, c
               onClick={clearFilteredValues}
             >
               Clear Filter
-
             </button>
           </div>
         </div>

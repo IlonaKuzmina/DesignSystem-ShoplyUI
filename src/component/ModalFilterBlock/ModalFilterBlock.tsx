@@ -5,29 +5,22 @@ import './ModalFilterBlock.scss';
 
 type ModalFilterBlockProps = {
   closeModal?: () => void;
+  clearFilteredValues: () => void;
+  updateChekedCategory: (category: string) => void;
+  updateMinPrice: (min: string) => void;
+  updateMaxPrice: (max: string) => void;
 }
 
-const ModalFilterBlock: FC<ModalFilterBlockProps> = ({ closeModal }) => {
+const ModalFilterBlock: FC<ModalFilterBlockProps> = ({
+  closeModal, clearFilteredValues, updateChekedCategory, updateMinPrice, updateMaxPrice,
+}) => {
   const products = useSelector(({ product }: RootState) => product);
   const [visibleCategory, setVisibleCategory] = useState(2);
   const [maxP, setMaxP] = useState('');
   const [minP, setMinP] = useState('');
 
-  const [filteredData, setFilteredData] = useState({
-    category: '',
-    minPrice: '',
-    maxPrice: '',
-  });
-
   const showMoreCategory = () => {
     setVisibleCategory((prevVisible) => prevVisible + 10);
-  };
-
-  const aplyFilteredValues = (min: string, max: string) => {
-    setFilteredData({
-      ...filteredData, minPrice: min, maxPrice: max,
-    });
-    console.log('show filter', filteredData);
   };
 
   return (
@@ -56,11 +49,13 @@ const ModalFilterBlock: FC<ModalFilterBlockProps> = ({ closeModal }) => {
                     {' '}
                     {category}
                     <input
+                      id="modal-shadow"
+                      className="modal__category--radio"
                       key={id}
-                      type="checkbox"
-                      name={category}
+                      type="radio"
+                      name="category"
                       value={category}
-                      onChange={(e) => { setFilteredData({ ...filteredData, category: e.target.value }); }}
+                      onChange={(e) => { updateChekedCategory(e.target.value); }}
                     />
                   </label>
                 ))}
@@ -96,7 +91,6 @@ const ModalFilterBlock: FC<ModalFilterBlockProps> = ({ closeModal }) => {
 
             <button
               className="price__button--set"
-              onClick={() => { setFilteredData({ ...filteredData, minPrice: minP, maxPrice: maxP }); }}
             >
               Set price
 
@@ -110,12 +104,18 @@ const ModalFilterBlock: FC<ModalFilterBlockProps> = ({ closeModal }) => {
           <div className="filter__button--wrapper">
             <button
               className="filter__button--clear"
-              onClick={() => { }}
+              onClick={clearFilteredValues}
             >
               Clear Filter
 
             </button>
-            <button className="filter__button--apply" onClick={closeModal}>Apply</button>
+            <button
+              className="filter__button--apply"
+              onClick={() => { updateMinPrice(minP); updateMaxPrice(maxP); }}
+            >
+              Apply
+
+            </button>
           </div>
         </div>
       </div>
