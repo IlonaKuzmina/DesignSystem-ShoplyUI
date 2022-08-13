@@ -37,6 +37,10 @@
   color: #616467;
 }
 
+.line__active {
+  font-weight: bold;
+}
+
 @media screen and (max-width: 770px) {
   .navigation__line--container {
     height: 71px;

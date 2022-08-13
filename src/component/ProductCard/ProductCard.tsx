@@ -1,44 +1,57 @@
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { addCount, addToCart } from '../../reducer/productReducer/productReducer';
+import { addToCart, countAllInCart } from '../../reducer/productReducer/productReducer';
 import { AppDispatch } from '../../reducer/store';
-import ButtonWithIcon from '../ButtonWithIcon/ButtonWithIcon';
 import './ProductCard.scss';
 
 type ProductCardProps = {
-  id?: number,
-  backgroundImage?: string,
+  id: number,
+  image: string,
+  price: number,
+  name: string,
 }
 
 export const ProductCard: FC<ProductCardProps> = ({
-  id, backgroundImage,
+  id, price, name, image,
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 
   return (
-    <div
-      key={id}
-      className="card__wrapper"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
-    >
-      <div className="card__button--container">
-        <button
-          className="product__button--customisation"
-          onClick={() => {
-            navigate(`/product/${id}`);
-          }}
-        >
-          detail
+    <div className="product__card--wrapper" key={id}>
+      <div
+        key={id}
+        className="card"
+        style={{ backgroundImage: `url(${image})` }}
+      >
+        <div className="button__wrapper">
+          <button
+            className="products__button--detail"
+            onClick={() => {
+              navigate(`/product/${id}`);
+            }}
+          >
+            detail
 
-        </button>
-        <ButtonWithIcon
-          type="icon"
-          onClick={() => { dispatch(addToCart(id)); dispatch(addCount(id)); }}
-          icon="./assets/icons/cart.svg"
-          padding="5px 13px"
-        />
+          </button>
+          <button
+            className="products__button--cart"
+            onClick={() => { dispatch(addToCart(Number(id))); dispatch(countAllInCart()); }}
+          >
+            <img className="icon__button--cart" src="/assets/icons/cart.svg" alt="Cart" />
+
+          </button>
+        </div>
+      </div>
+
+      <div className="product__info">
+        <span>{name}</span>
+        <strong>
+          $
+          {' '}
+          {price}
+        </strong>
       </div>
     </div>
   );

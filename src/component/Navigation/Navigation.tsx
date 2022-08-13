@@ -17,11 +17,47 @@ export const Navigation = () => {
         </div>
 
         <div className="navigation__links--container">
-          <NavLink to="/home" className="navigation__link">Home</NavLink>
+          <NavLink
+            to="/home"
+            className={({ isActive }) => [
+              'navigation__link',
+              isActive ? 'active__link' : null,
+            ]
+              .filter(Boolean)
+              .join(' ')}
+            end
+          >
+            Home
+
+          </NavLink>
           /
-          <NavLink to="/products" className="navigation__link">Products</NavLink>
+          <NavLink
+            to="/products"
+            className={({ isActive }) => [
+              'navigation__link',
+              isActive ? 'active__link' : null,
+            ]
+              .filter(Boolean)
+              .join(' ')}
+            end
+          >
+            Products
+
+          </NavLink>
           /
-          <NavLink to="/about" className="navigation__link">About</NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) => [
+              'navigation__link',
+              isActive ? 'active__link' : null,
+            ]
+              .filter(Boolean)
+              .join(' ')}
+            end
+          >
+            About
+
+          </NavLink>
         </div>
 
         <div className="cart__button--container">

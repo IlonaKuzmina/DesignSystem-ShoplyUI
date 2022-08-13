@@ -1,24 +1,35 @@
-import React, { FC, ReactNode, useState } from 'react';
+import React, {
+  FC, ReactNode, useEffect, useState,
+} from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../reducer/store';
 import './ProductsMainFilterBlock.scss';
 
 type ProductsMainFilterBlockProps = {
   children?: ReactNode;
+  clearFilteredValues: () => void;
 }
 
-const ProductsMainFilterBlock: FC<ProductsMainFilterBlockProps> = ({ children }) => {
+const ProductsMainFilterBlock: FC<ProductsMainFilterBlockProps> = ({ children, clearFilteredValues }) => {
   const products = useSelector(({ product }: RootState) => product);
   const [visibleCategory, setVisibleCategory] = useState(2);
-  const [checkedValue, setCheckedValue] = useState([]);
+  const [minP, setMinP] = useState('');
+  const [maxP, setMaxP] = useState('');
+  const [filteredData, setFilteredData] = useState({
+    category: '',
+    minPrice: '',
+    maxPrice: '',
+  });
 
-  const showMoreCategory = () => {
-    setVisibleCategory((prevVisible) => prevVisible + 10);
+  useEffect(() => { }, []);
+
+  const showOthersCategory = () => {
+    setVisibleCategory((prevVisible) => prevVisible + 5);
   };
 
-  const getCheckedValue = (value:string) => {
-    console.log(value);
-  };
+  // const clearFilteredValues = () => {
+  //   setFilteredData({ minPrice: '', maxPrice: '', category: '' });
+  // };
 
   return (
 
@@ -31,28 +42,31 @@ const ProductsMainFilterBlock: FC<ProductsMainFilterBlockProps> = ({ children })
           </div>
         </div>
       </div>
-
       <div className="row center-xs">
         <div className="col-xs-10">
           <div className="main__category--wrapper">
             <h4 className="category__block--title">Product category</h4>
 
             <div className="category__list--container">
-              {products && products.items.slice(0, visibleCategory).map(({ category, id }) => (
-                <label className="category__label" key={id} htmlFor={category}>
-                  {' '}
-                  {category}
-                  <input
-                    type="checkbox"
-                    name={category}
-                    value={category}
-                    onChange={(e) => { getCheckedValue(e.target.value); }}
-                  />
-                </label>
-              ))}
+              {products && products.items
+                .filter(({ category }, index, a) => a.findIndex((e) => category === e.category) === index)
+                .slice(0, visibleCategory)
+                .map(({ category, id }) => (
+                  <label className="category__label" key={id} htmlFor={category}>
+                    {' '}
+                    {category}
+                    <input
+                      key={id}
+                      type="checkbox"
+                      name={category}
+                      value={category}
+                      onChange={(e) => { setFilteredData({ ...filteredData, category: e.target.value }); }}
+                    />
+                  </label>
+                ))}
             </div>
 
-            <button className="category__button--others" onClick={() => showMoreCategory()}>
+            <button className="category__button--others" onClick={() => showOthersCategory()}>
               Others
               {' '}
               <img className="others__arrow" src="./assets/icons/others.svg" alt="others" />
@@ -66,12 +80,34 @@ const ProductsMainFilterBlock: FC<ProductsMainFilterBlockProps> = ({ children })
           <div className="main__price--wrapper">
             <h4 className="price__block--title">Price range</h4>
             <div className="main__range--wrapper">
-              <input className="main__price--input" type="text" placeholder="Min" />
-              <input className="main__price--input" type="text" placeholder="Max" />
+              <input
+                className="main__price--input"
+                type="text"
+                placeholder="Min"
+                onChange={(e) => setMinP(e.target.value)}
+              />
+              <input
+                className="main__price--input"
+                type="text"
+                placeholder="Max"
+                onChange={(e) => setMaxP(e.target.value)}
+              />
             </div>
 
-            <button className="main__button--set">Set price</button>
-            <button className="filter__button--clear">Cleare filtr</button>
+            <button
+              className="main__button--set"
+              onClick={() => { setFilteredData({ ...filteredData, minPrice: minP, maxPrice: maxP }); }}
+            >
+              Set price
+
+            </button>
+            <button
+              className="main__button--clear"
+              onClick={clearFilteredValues}
+            >
+              Clear Filter
+
+            </button>
           </div>
         </div>
       </div>

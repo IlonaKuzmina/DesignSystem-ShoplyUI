@@ -1,0 +1,12 @@
+.scrollup__button {
+  position: fixed;
+  bottom: 10%;
+  right: 5%;
+  border: none;
+  background-color: transparent;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1.5;
+  }
+}

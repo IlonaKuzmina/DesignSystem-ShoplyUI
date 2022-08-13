@@ -65,6 +65,7 @@
 
 .main__price--wrapper {
   align-items: stretch;
+  margin-top: 50px;
   margin-bottom: 180px;
   width: 100%;
 }
@@ -74,6 +75,7 @@
   flex-direction: row;
   flex-wrap: nowrap;
   margin-bottom: 10px;
+  justify-content: space-between;
 }
 
 .main__price--input {
@@ -81,6 +83,7 @@
   background: #ffffff;
   border: 1px solid #c5c5c5;
   max-width: 45%;
+  padding: 9px 0;
 }
 
 .main__price--input:first-child {
@@ -91,9 +94,7 @@
   text-align: center;
 }
 
-.main__button--set,
-.filter__button--clear,
-.filter__button--apply {
+.main__button--set {
   line-height: 132%;
   font-size: 14px;
   letter-spacing: 0.015em;
@@ -116,15 +117,14 @@
   grid-template-columns: 50% 50%;
 }
 
-.filter__button--apply {
-  margin-left: 5px;
-}
-
-.filter__button--clear {
+.main__button--clear {
   background: #ffffff;
   border: 1px solid #000000;
   color: #000000;
   margin-right: 5px;
+  margin-top: 50px;
+  border-radius: 10px;
+  padding: 9px 0;
 }
 
 @media screen and (max-width: 600px) {

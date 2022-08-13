@@ -1,17 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
-import productsData, { ProductData } from '../../data/productData';
+import { ProductData } from '../../data/productData';
 
 export const productReducer = createSlice({
   name: 'product',
   initialState: {
-    items: <ProductData[]>productsData,
+    items: localStorage.getItem('products')
+      ? (JSON.parse(localStorage.getItem('products') || '[]') as ProductData[]) : [],
     cartTotal: 0,
     cartTotalSum: 0,
     addToCartCounter: 1,
   },
 
   reducers: {
-
     addToCart(state, action) {
       state.items = state.items.map((i) => {
         if (i.id === action.payload) {

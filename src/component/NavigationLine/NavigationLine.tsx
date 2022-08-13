@@ -15,13 +15,49 @@ const NavigationLine: FC<NavigationLineProps> = ({
 
   return (
     <div className="navigation__line--container">
-      <NavLink to="/home" className="navigaation__line--link">Home</NavLink>
+      <NavLink
+        to="/home"
+        className={({ isActive }) => [
+          'navigaation__line--link',
+          isActive ? 'active__link' : null,
+        ]
+          .filter(Boolean)
+          .join(' ')}
+        end
+      >
+        Home
+
+      </NavLink>
       <span className="navigation__line--separator">
         {' '}
         {'>'}
       </span>
-      <NavLink to={`/${link}`} className="navigaation__line--link">{link}</NavLink>
-      <NavLink to={`/${linkTwo}`} className="navigaation__line--link">{linkTwo}</NavLink>
+      <NavLink
+        to={`/${link}`}
+        className={({ isActive }) => [
+          'navigaation__line--link',
+          isActive ? 'active__link' : null,
+        ]
+          .filter(Boolean)
+          .join(' ')}
+        end
+      >
+        {link}
+
+      </NavLink>
+      <NavLink
+        to={`/${linkTwo}`}
+        className={({ isActive }) => [
+          'navigaation__line--link',
+          isActive ? 'active__link' : null,
+        ]
+          .filter(Boolean)
+          .join(' ')}
+        end
+      >
+        {linkTwo}
+
+      </NavLink>
     </div>
   );
 };

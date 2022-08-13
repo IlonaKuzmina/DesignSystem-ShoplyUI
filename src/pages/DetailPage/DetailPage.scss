@@ -37,7 +37,7 @@
   width: 100%;
   height: 100%;
   background-color: #9a9292;
-  object-fit:fill;
+  object-fit: fill;
   overflow: hidden;
   border-radius: 4px;
   object-fit: cover;
@@ -60,6 +60,17 @@
 .product__stock--info,
 .product__price--info {
   margin: 42px 0;
+}
+
+.product__button--block {
+  position: relative;
+}
+
+.detail__cart--msg {
+  position: absolute;
+  color: #ff6565;
+  left: 9%;
+  bottom: 50px;
 }
 
 .product__right--container {
@@ -88,7 +99,7 @@
   height: 100%;
   margin-right: 15px;
   border-radius: 4px;
-  object-fit:contain;
+  object-fit: contain;
 }
 
 @media screen and (max-width: 770px) {
@@ -116,6 +127,7 @@
 
   .product__button--block {
     margin-top: 25px;
+    position: relative;
   }
 
   .product__stock--info,
@@ -133,7 +145,6 @@
   }
 
   .addition__image {
-    // max-width: none;
     margin: 5px;
     object-fit: cover;
   }
@@ -146,8 +157,20 @@
     margin: 0px;
   }
 
-  .count__btn{
+  .count__btn {
     margin-bottom: 19px;
+  }
+
+  .detail__cart--msg {
+    left: 7%;
+    bottom: -10px;
+  }
+}
+
+@media screen and (max-width: 379px) {
+  .detail__cart--msg {
+    left: 60%;
+    top: 10%;
   }
 }
 
@@ -191,7 +214,7 @@
     margin-top: 20px;
   }
 
-  .count__btn{
+  .count__btn {
     width: 35px;
     height: 35px;
     margin-bottom: 19px;

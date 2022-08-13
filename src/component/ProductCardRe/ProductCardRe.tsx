@@ -1,18 +1,18 @@
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { addCount, addToCart } from '../../reducer/productReducer/productReducer';
+import { addToCart, countAllInCart } from '../../reducer/productReducer/productReducer';
 import { AppDispatch } from '../../reducer/store';
 import ButtonWithIcon from '../ButtonWithIcon/ButtonWithIcon';
 import './ProductCardRe.scss';
 
 type ProductCardProps = {
   id?: number,
-  backgroundImage?: string,
+  image?: string,
 }
 
 export const ProductCard: FC<ProductCardProps> = ({
-  id, backgroundImage,
+  id, image,
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
@@ -21,7 +21,7 @@ export const ProductCard: FC<ProductCardProps> = ({
     <div
       key={id}
       className="card__wrapper"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+      style={{ backgroundImage: `url(${image})` }}
     >
       <div className="card__button--container">
         <button
@@ -35,7 +35,7 @@ export const ProductCard: FC<ProductCardProps> = ({
         </button>
         <ButtonWithIcon
           type="icon"
-          onClick={() => { dispatch(addToCart(id)); dispatch(addCount(id)); }}
+          onClick={() => { dispatch(addToCart(Number(id))); dispatch(countAllInCart()); }}
           icon="./assets/icons/cart.svg"
           padding="5px 5px"
         />

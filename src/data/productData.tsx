@@ -184,6 +184,6 @@ const productsData: ProductData[] = [
 
 export const getAllProducts = () => [...productsData];
 // eslint-disable-next-line max-len
-export const getProduct = (id: number) => productsData.find((product) => product.id === id);
+// export const getProduct = (id: number) => productsData.find((product) => product.id === id);
 
 export default productsData;

@@ -17,30 +17,30 @@ const HomeProduct: FC = () => {
       <HomeTitle title="product" />
       <div className="product__card--container">
         <MediaQuery maxWidth={359}>
-          {products && products.items.slice(0, 4).map(({ image, id, name }) => (
+          {products && products.items.slice(0, 4).map(({ image, id }) => (
             <ProductCardRe
               key={id}
-              backgroundImage={image}
+              image={image}
               id={id}
             />
           ))}
         </MediaQuery>
 
         <MediaQuery minWidth={360} maxWidth={950}>
-          {products && products.items.slice(0, 6).map(({ image, id, name }) => (
+          {products && products.items.slice(0, 6).map(({ image, id }) => (
             <ProductCardRe
               key={id}
-              backgroundImage={image}
+              image={image}
               id={id}
             />
           ))}
         </MediaQuery>
 
         <MediaQuery minWidth={951}>
-          {products && products.items.slice(0, 8).map(({ image, id, name }) => (
+          {products && products.items.slice(0, 8).map(({ image, id }) => (
             <ProductCardRe
               key={id}
-              backgroundImage={image}
+              image={image}
               id={id}
             />
           ))}

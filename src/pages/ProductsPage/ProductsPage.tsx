@@ -1,34 +1,65 @@
 import React, { useEffect, useState } from 'react';
 import MediaQuery from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import Button from '../../component/Button/Button';
 import NavigationLine from '../../component/NavigationLine/NavigationLine';
 import SortingLineBig from '../../component/SortingLineBig/SortingLineBig';
 import SortingLineSmall from '../../component/SortingLineSmall/SortingLineSmall';
-import {
-  addToCart, countAllInCart, searchByName, sortedByName,
-} from '../../reducer/productReducer/productReducer';
+import { searchByName } from '../../reducer/productReducer/productReducer';
 import { AppDispatch, RootState } from '../../reducer/store';
 import './ProductsPage.scss';
 import ModalFilterBlock from '../../component/ModalFilterBlock/ModalFilterBlock';
 import ProductsMainFilterBlock from '../../component/ProductsMainFilterBlock/ProductsMainFilterBlock';
+import ScrollUpButton from '../../component/ScrollUpButton/ScrollUpButton';
+import ProductCard from '../../component/ProductCard/ProductCard';
+import { ProductData } from '../../data/productData';
 
 const ProductPage = () => {
   const products = useSelector(({ product }: RootState) => product);
   const [visibleProducts, setVisibleProducts] = useState(8);
   const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
   const [searchState, setSearchState] = useState('');
   const [filterOpen, setFilterOpen] = useState(false);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [filterOpen]);
+  const [productList, setProductList] = useState<ProductData[]>();
+
+  const [filteredData, setFilteredData] = useState({
+    category: '',
+    minPrice: 0,
+    maxPrice: 5000,
+  });
+
+  useEffect(() => { }, [filteredData]);
 
   const showMoreItems = () => {
     setVisibleProducts((prevVisible) => prevVisible + 4);
   };
+
+  const getFilteredAndSortedProductsList = () => {
+    const newProdList = products.items;
+    if (filteredData.category === '') {
+      setProductList(newProdList);
+    } else {
+      setProductList(newProdList.filter(({ category, price }) => category
+      === filteredData.category
+      && price >= filteredData.minPrice
+      && price <= filteredData.maxPrice));
+    }
+  };
+
+  const getNewPriceRange = (min:number, max:number) => {
+    setFilteredData({ ...filteredData, minPrice: min, maxPrice: max });
+  };
+
+  const getChekedCategory = (cat:string) => {
+    setFilteredData({ ...filteredData, category: cat });
+  };
+
+  const clearFilteredValues = () => {
+    setFilteredData({ minPrice: 0, maxPrice: 5000, category: '' });
+  };
+
+  useEffect(() => { getFilteredAndSortedProductsList(); }, [filteredData]);
 
   return (
     <>
@@ -37,7 +68,7 @@ const ProductPage = () => {
         {filterOpen ? (
           <ModalFilterBlock closeModal={() => { setFilterOpen(false); }} />
         ) : (
-          <ProductsMainFilterBlock />
+          <ProductsMainFilterBlock clearFilteredValues={clearFilteredValues} />
         )}
 
         <div className="right__side--container">
@@ -57,45 +88,18 @@ const ProductPage = () => {
           </MediaQuery>
 
           <div className="products__cards--container">
-            {products && products.items.slice(0, visibleProducts).map(({
-              image, id, name, price,
-            }) => (
-              <div className="product__card--wrapper" key={id}>
-                <div
-                  key={id}
-                  className="card"
-                  style={{ backgroundImage: `url(${image})` }}
-                >
-                  <div className="button__wrapper">
-                    <button
-                      className="products__button--detail"
-                      onClick={() => {
-                        navigate(`/product/${id}`);
-                      }}
-                    >
-                      detail
-
-                    </button>
-                    <button
-                      className="products__button--cart"
-                      onClick={() => { dispatch(addToCart(Number(id))); dispatch(countAllInCart()); }}
-                    >
-                      <img className="icon__button--cart" src="/assets/icons/cart.svg" alt="Cart" />
-
-                    </button>
-                  </div>
-                </div>
-
-                <div className="product__info">
-                  <span>{name}</span>
-                  <strong>
-                    $
-                    {' '}
-                    {price}
-                  </strong>
-                </div>
-              </div>
-            ))}
+            {productList && productList
+              .slice(0, visibleProducts)
+              .map(({
+                image, id, name, price,
+              }) => (
+                <ProductCard
+                  name={name}
+                  image={image}
+                  id={id}
+                  price={price}
+                />
+              ))}
           </div>
 
           <div className="more__button--wrapper">
@@ -108,6 +112,7 @@ const ProductPage = () => {
           </div>
         </div>
       </div>
+      <ScrollUpButton />
     </>
   );
 };

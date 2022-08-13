@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LoginPage.scss';
 
-const LoginPage = ({ loginStatus }: any) => {
+const LoginPage = ({ loginStatus, adminIsLoged }: any) => {
   const adminUser = {
-    email: 'admin@admin.com',
-    password: 'password123',
+    email: 'admin@adm.com',
+    password: '123',
   };
 
   const [user, setUser] = useState({ email: '', password: '' });
@@ -13,6 +13,7 @@ const LoginPage = ({ loginStatus }: any) => {
   const focusInput = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (focusInput.current) {
       focusInput.current.focus();
     }
@@ -22,23 +23,31 @@ const LoginPage = ({ loginStatus }: any) => {
     e.preventDefault();
   };
 
+  const goToAdminPage = (e: boolean) => {
+    if (e === true) {
+      navigate('/admin/home');
+    } else {
+      navigate('/login');
+    }
+  };
+
   return (
     <div className="login__header--wrapper">
       <div className="row center-xs middle-sm">
-        <div className="col-xs-12 col-sm-5 col-md-5">
-          <div className="header__wrapper--right">
+        <div className="col-xs-12 col-sm-6 col-md-5">
+          <div className="login__picture">
             <img src="./assets/images/clock__login.png" alt="Title" />
           </div>
         </div>
 
-        <div className="col-xs-12 col-sm-5 col-md-5">
+        <div className="col-xs-10 col-sm-5 col-md-5">
           <div className="login__wrapper--left">
             <form onSubmit={submitHandler}>
               <h1 className="login__title">login</h1>
               <input
                 className="login__name--input"
                 type="text"
-                placeholder=" "
+                placeholder="Email: admin@adm.com"
                 onChange={(e) => setUser({ ...user, email: e.target.value })}
                 value={user.email}
                 ref={focusInput}
@@ -50,7 +59,7 @@ const LoginPage = ({ loginStatus }: any) => {
               <input
                 className="login__password--input"
                 type="password"
-                placeholder=" "
+                placeholder="Password: 123"
                 onChange={(e) => setUser({ ...user, password: e.target.value })}
                 value={user.password}
                 required
@@ -63,14 +72,14 @@ const LoginPage = ({ loginStatus }: any) => {
               <br />
 
               <button
+                type="button"
                 className="login__button"
-                onClick={() => { loginStatus(user); navigate('/admin/home'); }}
+                onClick={() => { loginStatus(user); goToAdminPage(adminIsLoged); }}
               >
                 Next
 
               </button>
             </form>
-
           </div>
         </div>
 

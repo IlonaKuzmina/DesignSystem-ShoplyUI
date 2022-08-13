@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import store from './reducer/store';
 
 import './App.css';
 import Footer from './component/Footer/Footer';
@@ -14,10 +16,20 @@ import AdminProductsPage from './pages/AdminProductsPage/AdminProductsPage';
 import AdminHomePage from './pages/AdminHomePage/AdminHomePage';
 import AdminHeader from './component/AdminHeader/AdminHeader';
 import Page404 from './pages/Page404/Page404';
+import productsData from './data/productData';
 
 const App = () => {
   const [adminIsLoged, setAdminIsLoged] = useState(false);
-  const [error, setError] = useState();
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem('products', JSON.stringify(productsData));
+    setLoaded(true);
+  }, [loaded]);
+
+  if (!loaded) {
+    return <span />;
+  }
 
   const adminUser = {
     email: 'admin@adm.com',
@@ -37,33 +49,35 @@ const App = () => {
   };
 
   return (
-    <Router>
-      {!adminIsLoged ? (
-        <>
-          <Navigation />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/products" element={<ProductsPage />} />
-            <Route path="/product/:id" element={<DetailPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/login" element={<LoginPage loginStatus={loginStatus} />} />
-            <Route path="*" element={<Page404 />} />
-          </Routes>
-        </>
-      )
-        : (
+    <Provider store={store}>
+      <Router>
+        {!adminIsLoged ? (
           <>
-            <AdminHeader logOut={logOut} />
+            <Navigation />
             <Routes>
-              <Route path="/admin/home" element={<AdminHomePage />} />
-              <Route path="/admin/products" element={<AdminProductsPage />} />
+              <Route path="/" element={<HomePage />} />
+              <Route path="/home" element={<HomePage />} />
+              <Route path="/products" element={<ProductsPage />} />
+              <Route path="/product/:id" element={<DetailPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="/login" element={<LoginPage loginStatus={loginStatus} adminIsLoged={adminIsLoged} />} />
+              <Route path="*" element={<Page404 />} />
             </Routes>
           </>
-        )}
-      <Footer />
-    </Router>
+        )
+          : (
+            <>
+              <AdminHeader logOut={logOut} />
+              <Routes>
+                <Route path="/admin/home" element={<AdminHomePage />} />
+                <Route path="/admin/products" element={<AdminProductsPage />} />
+              </Routes>
+            </>
+          )}
+        <Footer />
+      </Router>
+    </Provider>
   );
 };
 

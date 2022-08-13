@@ -4,15 +4,30 @@ import { RootState } from '../../reducer/store';
 import './ModalFilterBlock.scss';
 
 type ModalFilterBlockProps = {
-    closeModal?: () => void;
+  closeModal?: () => void;
 }
 
 const ModalFilterBlock: FC<ModalFilterBlockProps> = ({ closeModal }) => {
   const products = useSelector(({ product }: RootState) => product);
   const [visibleCategory, setVisibleCategory] = useState(2);
+  const [maxP, setMaxP] = useState('');
+  const [minP, setMinP] = useState('');
+
+  const [filteredData, setFilteredData] = useState({
+    category: '',
+    minPrice: '',
+    maxPrice: '',
+  });
 
   const showMoreCategory = () => {
     setVisibleCategory((prevVisible) => prevVisible + 10);
+  };
+
+  const aplyFilteredValues = (min: string, max: string) => {
+    setFilteredData({
+      ...filteredData, minPrice: min, maxPrice: max,
+    });
+    console.log('show filter', filteredData);
   };
 
   return (
@@ -33,13 +48,22 @@ const ModalFilterBlock: FC<ModalFilterBlockProps> = ({ closeModal }) => {
             <h4 className="category__block--title">Product category</h4>
 
             <div className="category__list--container">
-              {products && products.items.slice(0, visibleCategory).map(({ category, id }) => (
-                <label className="modal__category--label" key={id} htmlFor={category}>
-                  {' '}
-                  {category}
-                  <input type="checkbox" />
-                </label>
-              ))}
+              {products && products.items
+                .filter(({ category }, index, a) => a.findIndex((e) => category === e.category) === index)
+                .slice(0, visibleCategory)
+                .map(({ category, id }) => (
+                  <label className="modal__category--label" key={id} htmlFor={category}>
+                    {' '}
+                    {category}
+                    <input
+                      key={id}
+                      type="checkbox"
+                      name={category}
+                      value={category}
+                      onChange={(e) => { setFilteredData({ ...filteredData, category: e.target.value }); }}
+                    />
+                  </label>
+                ))}
             </div>
 
             <button className="category__button--others" onClick={() => showMoreCategory()}>
@@ -56,11 +80,27 @@ const ModalFilterBlock: FC<ModalFilterBlockProps> = ({ closeModal }) => {
           <div className="price__block--wrapper">
             <h4 className="price__block--title">Price range</h4>
             <div className="price__range--wrapper">
-              <input className="price__input" type="text" placeholder="Min" />
-              <input className="price__input" type="text" placeholder="Max" />
+              <input
+                className="price__input"
+                type="number"
+                placeholder="Min"
+                onChange={(e) => setMinP(e.target.value)}
+              />
+              <input
+                className="price__input"
+                type="number"
+                placeholder="Max"
+                onChange={(e) => setMaxP(e.target.value)}
+              />
             </div>
 
-            <button className="price__button--set">Set price</button>
+            <button
+              className="price__button--set"
+              onClick={() => { setFilteredData({ ...filteredData, minPrice: minP, maxPrice: maxP }); }}
+            >
+              Set price
+
+            </button>
           </div>
         </div>
       </div>
@@ -68,7 +108,13 @@ const ModalFilterBlock: FC<ModalFilterBlockProps> = ({ closeModal }) => {
       <div className="row center-xs">
         <div className="col-xs-10">
           <div className="filter__button--wrapper">
-            <button className="filter__button--clear">Cleare filtr</button>
+            <button
+              className="filter__button--clear"
+              onClick={() => { }}
+            >
+              Clear Filter
+
+            </button>
             <button className="filter__button--apply" onClick={closeModal}>Apply</button>
           </div>
         </div>

@@ -15,7 +15,6 @@ const DetailPage = () => {
   const products = useSelector(({ product }: RootState) => product);
   const dispatch = useDispatch<AppDispatch>();
   const { id } = useParams();
-  const [inStock, setInStock] = useState();
 
   useEffect(() => {
     const activeProduct = products.items.find((p) => p.id === Number(id));
@@ -75,6 +74,9 @@ const DetailPage = () => {
                 primary
                 onClick={() => { dispatch(addToCart(Number(id))); dispatch(countAllInCart()); }}
               />
+
+              {products.addToCartCounter === currentProduct?.inStock
+                ? (<span className="detail__cart--msg">Out of stock</span>) : (<span />)}
             </div>
           </div>
 

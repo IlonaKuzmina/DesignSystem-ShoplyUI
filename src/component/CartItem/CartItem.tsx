@@ -44,6 +44,8 @@ const CartItem = ({
       </strong>
 
       <div className="cart__button--container big">
+        {count === inStock ? (<span className="cart__msg">Out of stock</span>) : (<span />)}
+        <br />
         <button
           className="cart__button--decrement"
           disabled={count === 0}
@@ -72,7 +74,7 @@ const CartItem = ({
           {' '}
           {price}
         </strong>
-        <div className="">
+        <div className="small__button--container">
           <button
             className="cart__button--decrement"
             disabled={count === 0}
@@ -83,12 +85,14 @@ const CartItem = ({
           </button>
           <button className="count__info">{count}</button>
           <button
+            disabled={count === inStock}
             className="cart__button--increment"
             onClick={() => onIncrement()}
           >
             +
 
           </button>
+          {count === inStock ? (<span className="small__cart--msg">Out of stock</span>) : (<span />)}
         </div>
       </div>
 

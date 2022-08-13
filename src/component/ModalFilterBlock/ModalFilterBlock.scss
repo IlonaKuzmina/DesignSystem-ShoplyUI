@@ -8,6 +8,7 @@
   left: 0;
   opacity: 4;
   transition: 0.4s;
+    overflow-y: auto;
 }
 
 .modal.active {
@@ -104,7 +105,8 @@
 .price__block--wrapper {
   align-items: stretch;
   width: min-content;
-  margin-bottom: 180px;
+  margin-bottom: 130px;
+  margin-top: 50px;
 }
 
 .price__input {
@@ -112,6 +114,7 @@
   background: #ffffff;
   border: 1px solid #c5c5c5;
   max-width: 100px;
+  padding: 9px 0;
 }
 
 .price__input:first-child {
@@ -152,13 +155,5 @@
   border: 1px solid #000000;
   color: #000000;
   margin-right: 5px;
+  padding: 9px 0;
 }
-
-//   @media screen and (max-width: 820px) {
-//   }
-
-//   @media screen and (max-width: 600px) {
-//     .left__side--container {
-//       display: none;
-//     }
-//   }

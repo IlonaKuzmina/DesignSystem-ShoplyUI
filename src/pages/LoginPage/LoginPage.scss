@@ -53,14 +53,16 @@
   margin: 40px 0;
 }
 
-.disabled {
-
-}
-
-.login__span--text{
+.login__span--text {
   text-decoration: underline;
   cursor: pointer;
-  &:hover{
-    color:#8e8e8e;
+  &:hover {
+    color: #8e8e8e;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .login__picture {
+    display: none;
   }
 }
