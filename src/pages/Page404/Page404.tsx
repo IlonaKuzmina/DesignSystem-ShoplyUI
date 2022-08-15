@@ -7,8 +7,8 @@ const Page404 = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="error__mesage--container">
-      <h1 className="error__mesage">
+    <div className="error__message--container">
+      <h1 className="error__message">
         {' '}
         The page you are looking for doesn&apos;t exist or has been moved!
       </h1>

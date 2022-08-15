@@ -1,32 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import MediaQuery from 'react-responsive';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Button from '../../component/Button/Button';
 import NavigationLine from '../../component/NavigationLine/NavigationLine';
 import SortingLineBig from '../../component/SortingLineBig/SortingLineBig';
 import SortingLineSmall from '../../component/SortingLineSmall/SortingLineSmall';
-import { searchByName } from '../../reducer/productReducer/productReducer';
-import { AppDispatch, RootState } from '../../reducer/store';
+import { RootState } from '../../reducer/store';
 import './ProductsPage.scss';
 import ModalFilterBlock from '../../component/ModalFilterBlock/ModalFilterBlock';
 import ProductsMainFilterBlock from '../../component/ProductsMainFilterBlock/ProductsMainFilterBlock';
 import ScrollUpButton from '../../component/ScrollUpButton/ScrollUpButton';
 import ProductCard from '../../component/ProductCard/ProductCard';
 import { ProductData } from '../../data/productData';
+import ProductNotFound from '../../component/ProductNotFound/ProductNotFound';
 
 const ProductPage = () => {
   const products = useSelector(({ product }: RootState) => product);
   const [visibleProducts, setVisibleProducts] = useState(8);
-  const dispatch = useDispatch<AppDispatch>();
   const [searchState, setSearchState] = useState('');
-  const [filterOpen, setFilterOpen] = useState(false);
-
+  const [modalFilterOpen, setModalFilterOpen] = useState(false);
   const [productList, setProductList] = useState<ProductData[]>();
 
   const [filter, setFilter] = useState({
-    category: '',
+    category: 'clear',
     minPrice: 0,
-    maxPrice: 5000,
+    maxPrice: 0,
+    sortOption: '',
   });
 
   const showMoreItems = () => {
@@ -35,13 +34,62 @@ const ProductPage = () => {
 
   const getFilteredAndSortedProductsList = () => {
     const newProdList = products.items;
-    if (filter.category === '') {
-      setProductList(newProdList);
-    } else {
-      setProductList(newProdList.filter(({ category, price }) => category
-        === filter.category
-        && price >= filter.minPrice
-          && price <= filter.maxPrice));
+    const searchedByName = searchState.toLowerCase();
+    const categoryIsSets = filter.category !== 'clear';
+    const maxPriceIsSets = filter.maxPrice > 0;
+    const filteredProductsByName = newProdList.filter(({ name }) => name.toLowerCase().includes(searchedByName));
+
+    switch (filter.sortOption) {
+      case 'asc':
+        if (categoryIsSets && maxPriceIsSets) {
+          setProductList(filteredProductsByName.filter(({ category, price, name }) => category === filter.category
+            && price >= filter.minPrice
+            && price <= filter.maxPrice
+            && name.toLowerCase().includes(searchedByName)).sort((a: any, b: any) => a.name.localeCompare(b.name)));
+        } else if (!categoryIsSets && maxPriceIsSets) {
+          setProductList(filteredProductsByName.filter(({ price, name }) => price >= filter.minPrice
+            && price <= filter.maxPrice
+            && name.toLowerCase().includes(searchedByName)).sort((a: any, b: any) => a.name.localeCompare(b.name)));
+        } else if (categoryIsSets) {
+          setProductList(filteredProductsByName.filter(({ category, name }) => category === filter.category
+            && name.toLowerCase().includes(searchedByName)).sort((a: any, b: any) => a.name.localeCompare(b.name)));
+        } else {
+          setProductList(filteredProductsByName.sort((a: any, b: any) => a.name.localeCompare(b.name)));
+        }
+        break;
+      case 'desc':
+        if (categoryIsSets && maxPriceIsSets) {
+          setProductList(filteredProductsByName.filter(({ category, price, name }) => category === filter.category
+            && price >= filter.minPrice
+            && price <= filter.maxPrice
+            && name.toLowerCase().includes(searchedByName)).sort((a: any, b: any) => b.name.localeCompare(a.name)));
+        } else if (!categoryIsSets && maxPriceIsSets) {
+          setProductList(filteredProductsByName.filter(({ price, name }) => price >= filter.minPrice
+            && price <= filter.maxPrice
+            && name.toLowerCase().includes(searchedByName)).sort((a: any, b: any) => b.name.localeCompare(a.name)));
+        } else if (categoryIsSets) {
+          setProductList(filteredProductsByName.filter(({ category, name }) => category === filter.category
+            && name.toLowerCase().includes(searchedByName)).sort((a: any, b: any) => b.name.localeCompare(a.name)));
+        } else {
+          setProductList(filteredProductsByName.sort((a: any, b: any) => b.name.localeCompare(a.name)));
+        }
+        break;
+      default:
+        if (categoryIsSets && maxPriceIsSets) {
+          setProductList(filteredProductsByName.filter(({ category, price, name }) => category === filter.category
+            && price >= filter.minPrice
+            && price <= filter.maxPrice
+            && name.toLowerCase().includes(searchedByName)));
+        } else if (!categoryIsSets && maxPriceIsSets) {
+          setProductList(filteredProductsByName.filter(({ price, name }) => price >= filter.minPrice
+            && price <= filter.maxPrice
+            && name.toLowerCase().includes(searchedByName)));
+        } else if (categoryIsSets) {
+          setProductList(filteredProductsByName.filter(({ category, name }) => category === filter.category
+            && name.toLowerCase().includes(searchedByName)));
+        } else {
+          setProductList(filteredProductsByName);
+        }
     }
   };
 
@@ -55,23 +103,29 @@ const ProductPage = () => {
     setFilter({ ...filter, maxPrice: maxPri });
   };
 
-  const updateChekedCategory = (cat: any) => {
-    setFilter({ ...filter, category: cat });
+  const updateChekedCategory = (categor: any) => {
+    setFilter({ ...filter, category: categor });
+  };
+
+  const updateSortStatus = (sort: any) => {
+    setFilter({ ...filter, sortOption: sort });
   };
 
   const clearFilteredValues = () => {
-    setFilter({ minPrice: 0, maxPrice: 5000, category: '' });
+    setFilter({
+      minPrice: 0, maxPrice: 0, category: 'clear', sortOption: '',
+    });
   };
 
-  useEffect(() => { getFilteredAndSortedProductsList(); }, [filter]);
+  useEffect(() => { getFilteredAndSortedProductsList(); }, [filter, searchState]);
 
   return (
     <>
       <NavigationLine link="products" />
       <div className="products__page--container">
-        {filterOpen ? (
+        {modalFilterOpen ? (
           <ModalFilterBlock
-            closeModal={() => { setFilterOpen(false); }}
+            closeModal={() => { setModalFilterOpen(false); }}
             clearFilteredValues={clearFilteredValues}
             updateChekedCategory={updateChekedCategory}
             updateMinPrice={updateMinPrice}
@@ -91,40 +145,52 @@ const ProductPage = () => {
             className="search__input"
             type="text"
             placeholder="Search by subcategory..."
-            onChange={(event) => { setSearchState(event.target.value); dispatch(searchByName(event.target.value)); }}
+            onChange={(e) => { setSearchState(e.target.value); }}
           />
 
           <MediaQuery maxWidth={600}>
-            <SortingLineSmall onClick={() => { setFilterOpen(true); }} />
+            <SortingLineSmall onClick={() => { setModalFilterOpen(true); }} sortedByName={updateSortStatus} />
           </MediaQuery>
 
           <MediaQuery minWidth={601}>
-            <SortingLineBig searchState={searchState} />
+            <SortingLineBig searchState={searchState} sortedByName={updateSortStatus} />
           </MediaQuery>
 
-          <div className="products__cards--container">
-            {productList && productList
-              .slice(0, visibleProducts)
-              .map(({
-                image, id, name, price,
-              }) => (
-                <ProductCard
-                  name={name}
-                  image={image}
-                  id={id}
-                  price={price}
-                />
-              ))}
-          </div>
+          <div className="card__container">
+            {productList && productList.length > 0 ? (
+              <div className="products__cards--container">
+                {productList && productList.slice(0, visibleProducts)
+                  .map(({
+                    image, id, name, price,
+                  }) => (
+                    <ProductCard
+                      key={id}
+                      name={name}
+                      image={image}
+                      id={id}
+                      price={price}
+                    />
+                  ))}
 
-          <div className="more__button--wrapper">
-            <Button
-              onClick={showMoreItems}
-              padding="13px 16px"
-              label="load more"
-              primary
-            />
+              </div>
+            ) : (
+              <div className="notfound__msg--container">
+                <ProductNotFound />
+              </div>
+            )}
+
           </div>
+          {productList && productList.length !== 0 ? (
+            <div className="more__button--wrapper">
+              <Button
+                onClick={showMoreItems}
+                padding="13px 16px"
+                label="load more"
+                primary
+              />
+            </div>
+          ) : <span />}
+
         </div>
       </div>
       <ScrollUpButton />

@@ -1,17 +1,14 @@
 import React, { FC } from 'react';
-import { useDispatch } from 'react-redux';
-import { sortedByName } from '../../reducer/productReducer/productReducer';
-import { AppDispatch } from '../../reducer/store';
 
 import './SortingLineBig.scss';
 
 type SortProps = {
   searchState: string;
+  sortedByName: (oprion: string) => void;
 }
 
-const SortingLineBig: FC<SortProps> = ({ searchState }) => {
-  const dispatch = useDispatch<AppDispatch>();
-  const line = 2;
+const SortingLineBig: FC<SortProps> = ({ searchState, sortedByName }) => {
+  const c = 2;
 
   return (
     <div className="sorting__big--line">
@@ -27,9 +24,9 @@ const SortingLineBig: FC<SortProps> = ({ searchState }) => {
           className="sorting__big--options"
           name="sorting"
           id="sorting"
-          onChange={(event) => { dispatch(sortedByName(event.target.value)); }}
+          onChange={(e) => { sortedByName(e.target.value); }}
         >
-          <option value="default">Select</option>
+          <option value="default">Default order</option>
           <option value="asc">Name (A-B)</option>
           <option value="desc">Name (B-A)</option>
         </select>

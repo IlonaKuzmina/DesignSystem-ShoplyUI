@@ -18,6 +18,10 @@
   min-height: 800px;
 }
 
+.notfound__msg--container {
+  margin-bottom: 80px;
+}
+
 .text__button {
   line-height: 132%;
   font-size: 20px;
@@ -94,6 +98,6 @@
   }
 
   .right__side--container {
-    margin: 0 auto;
+    margin-left: 0;
   }
 }

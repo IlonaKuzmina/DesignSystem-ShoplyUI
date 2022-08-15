@@ -1,16 +1,14 @@
 import { FC } from 'react';
-import { useDispatch } from 'react-redux';
-import { sortedByName } from '../../reducer/productReducer/productReducer';
-import { AppDispatch } from '../../reducer/store';
 
 import './SortingLineSmall.scss';
 
 type SortProps = {
-    onClick?: () => void;
+  onClick?: () => void;
+  sortedByName: (oprion: string) => void;
 }
 
-const SortingLineSmall: FC<SortProps> = ({ onClick }) => {
-  const dispatch = useDispatch<AppDispatch>();
+const SortingLineSmall: FC<SortProps> = ({ onClick, sortedByName }) => {
+  const c = 4;
 
   return (
     <div className="sorting__small--line">
@@ -33,9 +31,9 @@ const SortingLineSmall: FC<SortProps> = ({ onClick }) => {
             className="sorting__small--options"
             name="sorting"
             id="sorting"
-            onChange={(event) => { dispatch(sortedByName(event.target.value)); }}
+            onChange={(e) => { sortedByName(e.target.value); }}
           >
-            <option value="default">Select</option>
+            <option value="default">Default order</option>
             <option value="asc">Name (A-B)</option>
             <option value="desc">Name (B-A)</option>
           </select>

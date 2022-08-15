@@ -4,7 +4,7 @@ import { RootState } from '../../reducer/store';
 import './ModalFilterBlock.scss';
 
 type ModalFilterBlockProps = {
-  closeModal?: () => void;
+  closeModal: () => void;
   clearFilteredValues: () => void;
   updateChekedCategory: (category: string) => void;
   updateMinPrice: (min: string) => void;

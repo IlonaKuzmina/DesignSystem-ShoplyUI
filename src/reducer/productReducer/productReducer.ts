@@ -5,7 +5,8 @@ export const productReducer = createSlice({
   name: 'product',
   initialState: {
     items: localStorage.getItem('products')
-      ? (JSON.parse(localStorage.getItem('products') || '[]') as ProductData[]) : [],
+      ? (JSON.parse(localStorage.getItem('products') || '[]') as ProductData[])
+      : [],
     cartTotal: 0,
     cartTotalSum: 0,
     addToCartCounter: 1,
@@ -84,27 +85,6 @@ export const productReducer = createSlice({
       const priceTotal = price.reduce((acc, items) => acc + items);
       state.cartTotalSum = priceTotal;
     },
-
-    sortedByName(state, action) {
-      const selectedOption = action.payload;
-
-      if (selectedOption === 'asc') {
-        state.items.sort((a: any, b: any) => a.name.localeCompare(b.name));
-      } else if (selectedOption === 'desc') {
-        state.items.sort((a: any, b: any) => b.name.localeCompare(a.name));
-      }
-      return state;
-    },
-
-    searchByName(state, action) {
-      const searchValue = action.payload.toLowerCase();
-      const filteredProducts = state.items.filter((prod) => prod.subcategory.toLowerCase().includes(searchValue));
-
-      if (action.payload) {
-        state.items = filteredProducts;
-      }
-      return state;
-    },
   },
 });
 
@@ -117,8 +97,6 @@ export const {
   countTotalInCart,
   addCountInCart,
   removeCountInCart,
-  sortedByName,
-  searchByName,
 } = productReducer.actions;
 
 export default productReducer.reducer;
