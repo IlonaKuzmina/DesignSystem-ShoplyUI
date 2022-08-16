@@ -4,7 +4,7 @@ import { RootState } from '../../reducer/store';
 import './ModalFilterBlock.scss';
 
 type ModalFilterBlockProps = {
-  closeModal: () => void;
+  onCloseModal: () => void;
   clearFilteredValues: () => void;
   updateChekedCategory: (category: string) => void;
   updateMinPrice: (min: string) => void;
@@ -12,7 +12,7 @@ type ModalFilterBlockProps = {
 }
 
 const ModalFilterBlock: FC<ModalFilterBlockProps> = ({
-  closeModal, clearFilteredValues, updateChekedCategory, updateMinPrice, updateMaxPrice,
+  onCloseModal, clearFilteredValues, updateChekedCategory, updateMinPrice, updateMaxPrice,
 }) => {
   const products = useSelector(({ product }: RootState) => product);
   const [visibleCategory, setVisibleCategory] = useState(2);
@@ -30,7 +30,7 @@ const ModalFilterBlock: FC<ModalFilterBlockProps> = ({
         <div className="col-xs-10">
           <div className="tittle__block--wrapper">
             <h2 className="tittle__block--title">Filter</h2>
-            <button className="tittle__block--close" onClick={closeModal}>x</button>
+            <button className="tittle__block--close" onClick={onCloseModal}>x</button>
           </div>
         </div>
       </div>
@@ -111,7 +111,7 @@ const ModalFilterBlock: FC<ModalFilterBlockProps> = ({
             </button>
             <button
               className="filter__button--apply"
-              onClick={() => { updateMinPrice(minP); updateMaxPrice(maxP); }}
+              onClick={() => { updateMinPrice(minP); updateMaxPrice(maxP); onCloseModal(); }}
             >
               Apply
 

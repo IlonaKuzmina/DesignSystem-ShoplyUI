@@ -125,7 +125,7 @@ const ProductPage = () => {
       <div className="products__page--container">
         {modalFilterOpen ? (
           <ModalFilterBlock
-            closeModal={() => { setModalFilterOpen(false); }}
+            onCloseModal={() => { setModalFilterOpen(false); }}
             clearFilteredValues={clearFilteredValues}
             updateChekedCategory={updateChekedCategory}
             updateMinPrice={updateMinPrice}
@@ -144,7 +144,7 @@ const ProductPage = () => {
           <input
             className="search__input"
             type="text"
-            placeholder="Search by subcategory..."
+            placeholder="Search by product name..."
             onChange={(e) => { setSearchState(e.target.value); }}
           />
 
@@ -194,6 +194,14 @@ const ProductPage = () => {
         </div>
       </div>
       <ScrollUpButton />
+      {/* <div className="toast toast-grey">
+        <span className="toast__text">Product is added in cart!</span>
+        <span className="toast__close">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.99999 4.586L10.243 0.343003C10.6335 -0.0474629 11.2665 -0.0474638 11.657 0.343002V0.343002C12.0475 0.733467 12.0475 1.36654 11.657 1.757L7.41399 6L11.657 10.243C12.0475 10.6335 12.0475 11.2665 11.657 11.657V11.657C11.2665 12.0475 10.6335 12.0475 10.243 11.657L5.99999 7.414L1.75699 11.657C1.36652 12.0475 0.733452 12.0475 0.342986 11.657V11.657C-0.0474791 11.2665 -0.0474789 10.6335 0.342987 10.243L4.58599 6L0.342987 1.757C-0.0474782 1.36654 -0.0474791 0.733467 0.342986 0.343002V0.343002C0.733452 -0.0474638 1.36652 -0.0474637 1.75699 0.343002L5.99999 4.586Z" fill="" />
+          </svg>
+        </span>
+      </div> */}
     </>
   );
 };

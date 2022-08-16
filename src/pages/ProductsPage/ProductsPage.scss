@@ -101,3 +101,39 @@
     margin-left: 0;
   }
 }
+
+.toast {
+  position:relative;
+  font-family: 'Lato',sans-serif;
+  size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.26;
+  border: 1px solid #F1F1F1;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 12px 16px 12px 16px;
+  width: 296px;
+  color:white;
+  margin:10px 20px;
+  top:10px;
+  right:10px;
+}
+
+.toast-grey {
+  background-color: #8e8e8e;
+}
+
+.toast__close{
+    position:absolute;
+    top:15px;
+    right:15px;
+    cursor: pointer;
+}
+
+.toast__close svg {
+    fill:currentColor;
+   }
+
+.toast__close:hover {
+    color: black;
+}
