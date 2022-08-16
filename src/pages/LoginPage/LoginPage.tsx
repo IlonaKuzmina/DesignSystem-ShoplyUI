@@ -23,8 +23,8 @@ const LoginPage = ({ loginStatus, adminIsLoged }: any) => {
     e.preventDefault();
   };
 
-  const goToAdminPage = (e: boolean) => {
-    if (e === true) {
+  const goToAdminPage = () => {
+    if ((user.password === adminUser.password) && (user.password === adminUser.password)) {
       navigate('/admin/home');
     } else {
       navigate('/login');
@@ -74,7 +74,7 @@ const LoginPage = ({ loginStatus, adminIsLoged }: any) => {
               <button
                 type="button"
                 className="login__button"
-                onClick={() => { loginStatus(user); goToAdminPage(adminIsLoged); }}
+                onClick={() => { loginStatus(user); goToAdminPage(); }}
               >
                 Next
 

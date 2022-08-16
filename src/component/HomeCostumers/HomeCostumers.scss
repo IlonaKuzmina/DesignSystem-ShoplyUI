@@ -44,7 +44,7 @@
 
 .costumer__container {
   display: grid;
-  grid-template-columns: 80%;
+  grid-template-columns: 90%;
   justify-content: center;
   align-items: center;
 }
@@ -56,7 +56,7 @@
 
 @media screen and (max-width: 770px) {
   .costumer__container {
-    padding: 30px 74px;
+    padding: 30px 20px;
   }
 
   .costumer__content--block {
