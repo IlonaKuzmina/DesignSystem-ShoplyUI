@@ -1,5 +1,5 @@
 import HomeTitle from '../HomeTitle/HomeTitle';
-import './HomePartner.scss';
+import './HomePartners.scss';
 
 export const HomePartners = () => (
   <footer className="partner__container">

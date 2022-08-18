@@ -9,57 +9,52 @@ type NavigationLineProps = {
 
 const NavigationLine: FC<NavigationLineProps> = ({
   link, linkTwo,
-}) => {
-  const navigation = useNavigate();
-  const [active, setActive] = useState(true);
+}) => (
+  <div className="navigation__line--container">
+    <NavLink
+      to="/home"
+      className={({ isActive }) => [
+        'navigaation__line--link',
+        isActive ? 'active__link' : null,
+      ]
+        .filter(Boolean)
+        .join(' ')}
+      end
+    >
+      Home
 
-  return (
-    <div className="navigation__line--container">
-      <NavLink
-        to="/home"
-        className={({ isActive }) => [
-          'navigaation__line--link',
-          isActive ? 'active__link' : null,
-        ]
-          .filter(Boolean)
-          .join(' ')}
-        end
-      >
-        Home
+    </NavLink>
+    <span className="navigation__line--separator">
+      {' '}
+      {'>'}
+    </span>
+    <NavLink
+      to={`/${link}`}
+      className={({ isActive }) => [
+        'navigaation__line--link',
+        isActive ? 'active__link' : null,
+      ]
+        .filter(Boolean)
+        .join(' ')}
+      end
+    >
+      {link}
 
-      </NavLink>
-      <span className="navigation__line--separator">
-        {' '}
-        {'>'}
-      </span>
-      <NavLink
-        to={`/${link}`}
-        className={({ isActive }) => [
-          'navigaation__line--link',
-          isActive ? 'active__link' : null,
-        ]
-          .filter(Boolean)
-          .join(' ')}
-        end
-      >
-        {link}
+    </NavLink>
+    <NavLink
+      to={`/${linkTwo}`}
+      className={({ isActive }) => [
+        'navigaation__line--link',
+        isActive ? 'active__link' : null,
+      ]
+        .filter(Boolean)
+        .join(' ')}
+      end
+    >
+      {linkTwo}
 
-      </NavLink>
-      <NavLink
-        to={`/${linkTwo}`}
-        className={({ isActive }) => [
-          'navigaation__line--link',
-          isActive ? 'active__link' : null,
-        ]
-          .filter(Boolean)
-          .join(' ')}
-        end
-      >
-        {linkTwo}
-
-      </NavLink>
-    </div>
-  );
-};
+    </NavLink>
+  </div>
+);
 
 export default NavigationLine;

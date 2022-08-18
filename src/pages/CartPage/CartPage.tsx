@@ -52,7 +52,9 @@ const CartPage = () => {
               price={price}
               count={count}
               inStock={inStock}
-              onIncrement={() => { dispatch(addCountInCart(id)); dispatch(countAllInCart()); dispatch(countTotalInCart()); }}
+              onIncrement={() => {
+                dispatch(addCountInCart(id)); dispatch(countAllInCart()); dispatch(countTotalInCart());
+              }}
               onDecrement={() => {
                 dispatch(removeCountInCart(id)); dispatch(countAllInCart()); dispatch(countTotalInCart());
                 if (count === 1) {
@@ -94,9 +96,7 @@ const CartPage = () => {
             <Button padding="13px 18px" label="Check out" primary />
           </div>
         </>
-
       )}
-
     </>
   );
 };

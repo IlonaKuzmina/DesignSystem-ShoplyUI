@@ -2,23 +2,40 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import BenefitsCard from './BenefitsCard';
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Example/Molecules/BenefitsCard',
+  title: 'Example/Atoms/BenefitsCard',
   component: BenefitsCard,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
+  decorators: [
+    (Story) => (
+      <div style={{
+        padding: '20px 20px', display: 'flex', textAlign: 'center',
+      }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof BenefitsCard>;
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof BenefitsCard> = (args) => <BenefitsCard {...args} />;
 
-export const Primary = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-  image: 'src/assets/icons/quality.svg',
+export const Quality = Template.bind({});
+Quality.args = {
+  image: '/assets/icons/quality.svg',
   title: 'Best Quality',
+  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc consectetur, purus id',
+};
+
+export const Shipping = Template.bind({});
+Shipping.args = {
+  image: '/assets/icons/shipping.svg',
+  title: 'Free Shipping',
+  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc consectetur, purus id',
+};
+
+export const Warranty = Template.bind({});
+Warranty.args = {
+  image: '/assets/icons/warranty.svg',
+  title: 'Warranty',
   text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc consectetur, purus id',
 };

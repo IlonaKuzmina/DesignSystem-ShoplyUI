@@ -7,17 +7,17 @@ const HomeBenefits = () => (
     <HomeTitle title="benefits using our services" />
     <div className="benefits__wrapper">
       <BenefitsCard
-        image="./assets/icons/quality.svg"
+        image="/assets/icons/quality.svg"
         title="best quality"
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc consectetur, purus id "
       />
       <BenefitsCard
-        image="./assets/icons/shipping.svg"
+        image="/assets/icons/shipping.svg"
         title="free shipping"
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc consectetur, purus id "
       />
       <BenefitsCard
-        image="./assets/icons/warranty.svg"
+        image="/assets/icons/warranty.svg"
         title="warranty"
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc consectetur, purus id "
       />

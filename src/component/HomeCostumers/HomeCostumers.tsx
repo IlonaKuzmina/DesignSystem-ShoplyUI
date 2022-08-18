@@ -7,7 +7,7 @@ const HomeCostumers = () => (
 
     <div className="costumer__content--block">
       <div className="costumer__image--wrapper">
-        <img className="costumer__image" src="./assets/images/girl.png" alt="" />
+        <img className="costumer__image" src="/assets/images/girl.png" alt="" />
       </div>
 
       <div className="costumer__content--wrapper">

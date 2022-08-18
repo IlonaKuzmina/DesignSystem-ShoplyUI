@@ -36,7 +36,7 @@ const LoginPage = ({ loginStatus, adminIsLoged }: any) => {
       <div className="row center-xs middle-sm">
         <div className="col-xs-12 col-sm-6 col-md-5">
           <div className="login__picture">
-            <img src="./assets/images/clock__login.png" alt="Title" />
+            <img src="/assets/images/clock__login.png" alt="Title" />
           </div>
         </div>
 

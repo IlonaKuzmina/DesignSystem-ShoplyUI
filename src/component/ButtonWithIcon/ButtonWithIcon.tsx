@@ -17,16 +17,16 @@ const ButtonWithIcon = ({
   type,
   primary,
 }: ButtonProps) => {
-  const mode = primary ? 'text__button--primary' : 'text__button--secondary';
+  const mode = primary ? 'text__btn--primary' : 'text__btn--secondary';
 
   return (
     <button
       onClick={onClick}
       style={{ padding }}
-      className={['text__button', `text__button--${type}`, mode].join(' ')}
+      className={['text__btn', `text__btn--${type}`, mode].join(' ')}
     >
       {label}
-      <img className="icon__button--cart" src={icon} alt="Cart" />
+      <img className="icon__btn--cart" src={icon} alt="Cart" />
     </button>
   );
 };

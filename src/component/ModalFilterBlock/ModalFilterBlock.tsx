@@ -64,7 +64,7 @@ const ModalFilterBlock: FC<ModalFilterBlockProps> = ({
             <button className="category__button--others" onClick={() => showMoreCategory()}>
               Others
               {' '}
-              <img className="others__arrow" src="./assets/icons/others.svg" alt="others" />
+              <img className="others__arrow" src="/assets/icons/others.svg" alt="others" />
             </button>
           </div>
         </div>

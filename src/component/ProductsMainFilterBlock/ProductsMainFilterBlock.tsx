@@ -62,7 +62,7 @@ const ProductsMainFilterBlock: FC<ProductsMainFilterBlockProps> = ({
             <button className="category__button--others" onClick={() => showOthersCategory()}>
               Others
               {' '}
-              <img className="others__arrow" src="./assets/icons/others.svg" alt="others" />
+              <img className="others__arrow" src="/assets/icons/others.svg" alt="others" />
             </button>
           </div>
         </div>

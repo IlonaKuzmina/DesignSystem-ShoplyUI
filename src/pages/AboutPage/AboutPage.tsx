@@ -15,7 +15,7 @@ const AboutPage = () => {
         <div className="row center-xs">
           <div className="col-xs-12 col-md-6">
             <div className="aboutpage__image--wrapper">
-              <img className="aboutpage__image" src="./assets/images/our__teem-1.png" alt="" />
+              <img className="aboutpage__image" src="/assets/images/our__teem-1.png" alt="" />
             </div>
           </div>
           <MediaQuery maxWidth={359}>

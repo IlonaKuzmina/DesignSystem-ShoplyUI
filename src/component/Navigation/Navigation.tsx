@@ -63,7 +63,7 @@ export const Navigation = () => {
         <div className="cart__button--container">
           <div className="cart__button--wrapper">
             <button className="cart__button" onClick={() => { navigate('/cart'); }}>
-              <img className="cart__button--image" src="./assets/icons/cart.svg" alt="Cart" />
+              <img className="cart__button--image" src="/assets/icons/cart.svg" alt="Cart" />
               <span className="cart__button--counter">{products.cartTotal}</span>
             </button>
           </div>

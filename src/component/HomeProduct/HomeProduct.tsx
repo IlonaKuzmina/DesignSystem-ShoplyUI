@@ -48,7 +48,7 @@ const HomeProduct: FC = () => {
       </div>
       <ButtonWithIcon
         padding="16px 52px"
-        icon="./assets/icons/arrow.svg"
+        icon="/assets/icons/arrow.svg"
         label="All product"
         onClick={() => navigate('/products')}
         type="gray"

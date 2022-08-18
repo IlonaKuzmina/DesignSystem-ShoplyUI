@@ -7,10 +7,14 @@ import Button from './Button';
 export default {
   title: 'Example/Atoms/Button',
   component: Button,
+  decorators: [
+    (Story) => (
+      <div style={{ margin: '1em' }}>
+        <Story />
+      </div>
+    ),
+  ],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 } as ComponentMeta<typeof Button>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
@@ -26,11 +30,5 @@ Primary.args = {
 export const Secondary = Template.bind({});
 Secondary.args = {
   primary: false,
-  label: 'shop now',
-};
-
-export const Gray = Template.bind({});
-Gray.args = {
-  type: 'gray',
   label: 'shop now',
 };

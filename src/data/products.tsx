@@ -4,14 +4,14 @@ export type ProductData = {
   specification?: string,
   price: number,
   image: string,
-  category?: string,
+  category: string,
   subcategory: string,
   inStock: number,
   inCart: boolean,
   count: number,
 }
 
-const productsData: ProductData[] = [
+const products: ProductData[] = [
   {
     id: 1,
     name: 'Razer Mouse X89',
@@ -74,7 +74,7 @@ const productsData: ProductData[] = [
   },
   {
     id: 6,
-    name: 'Mouse T78 Black',
+    name: 'Key T78 Black',
     specification: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh erat',
     price: 35,
     image: '/assets/images/product_6.png',
@@ -86,7 +86,7 @@ const productsData: ProductData[] = [
   },
   {
     id: 7,
-    name: 'Razer Mouse X89',
+    name: 'Razer X89',
     specification: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh erat',
     price: 80,
     image: '/assets/images/product_7.png',
@@ -103,7 +103,7 @@ const productsData: ProductData[] = [
     price: 230,
     image: '/assets/images/product_8.png',
     category: 'Electronic',
-    subcategory: 'diamond',
+    subcategory: 'mouse',
     inStock: 1,
     inCart: false,
     count: 0,
@@ -115,7 +115,7 @@ const productsData: ProductData[] = [
     price: 300,
     image: '/assets/images/product_9.png',
     category: 'Electronic',
-    subcategory: 'diamond',
+    subcategory: 'mouse',
     inStock: 1,
     inCart: false,
     count: 0,
@@ -180,10 +180,32 @@ const productsData: ProductData[] = [
     inCart: false,
     count: 0,
   },
+  {
+    id: 15,
+    name: 'Big Gaming Mouse',
+    specification: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh erat',
+    price: 300,
+    image: '/assets/images/product_10.png',
+    category: 'Electronic',
+    subcategory: 'mouse',
+    inStock: 2,
+    inCart: false,
+    count: 0,
+  },
+  {
+    id: 16,
+    name: 'Hell Pinch',
+    specification: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh erat',
+    price: 300,
+    image: '/assets/images/product_13.png',
+    category: 'Electronic',
+    subcategory: 'mouse',
+    inStock: 3,
+    inCart: false,
+    count: 0,
+  },
 ];
 
-export const getAllProducts = () => [...productsData];
-// eslint-disable-next-line max-len
-// export const getProduct = (id: number) => productsData.find((product) => product.id === id);
+export const getAllProducts = () => [...products];
 
-export default productsData;
+export default products;

@@ -1,12 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ProductData } from '../../data/productData';
+import products from '../../data/products';
 
 export const productReducer = createSlice({
   name: 'product',
   initialState: {
-    items: localStorage.getItem('products')
-      ? (JSON.parse(localStorage.getItem('products') || '[]') as ProductData[])
-      : [],
+    items: products,
     cartTotal: 0,
     cartTotalSum: 0,
     addToCartCounter: 1,

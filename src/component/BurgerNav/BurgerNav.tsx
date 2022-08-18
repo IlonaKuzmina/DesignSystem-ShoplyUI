@@ -13,9 +13,9 @@ const BurgerNav = () => {
   return (
     <section className="top-nav hiddenb" aria-hidden="true">
       <div className="logo__wrapper" onClick={() => { navigate('/home'); }}>
-        <img src="./assets/logo/Shoply..png" alt="" />
+        <img src="/assets/logo/Shoply..png" alt="" />
       </div>
-      <input id="menu-toggle" type="checkbox" checked={checked} onClick={() => { setChecked((old) => !old); }} />
+      <input id="menu-toggle" type="checkbox" checked={checked} onChange={() => { setChecked((old) => !old); }} />
       <label className="menu-button-container" htmlFor="menu-toggle">
         <div className="menu-button" />
       </label>

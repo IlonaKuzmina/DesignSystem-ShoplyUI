@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import store from './reducer/store';
 
 import './App.css';
@@ -16,20 +16,9 @@ import AdminProductsPage from './pages/AdminProductsPage/AdminProductsPage';
 import AdminHomePage from './pages/AdminHomePage/AdminHomePage';
 import AdminHeader from './component/AdminHeader/AdminHeader';
 import Page404 from './pages/Page404/Page404';
-import productsData from './data/productData';
 
 const App = () => {
   const [adminIsLoged, setAdminIsLoged] = useState(false);
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    localStorage.setItem('products', JSON.stringify(productsData));
-    setLoaded(true);
-  }, [loaded]);
-
-  if (!loaded) {
-    return <span />;
-  }
 
   const adminUser = {
     email: 'admin@adm.com',

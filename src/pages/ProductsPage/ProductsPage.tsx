@@ -11,7 +11,7 @@ import ModalFilterBlock from '../../component/ModalFilterBlock/ModalFilterBlock'
 import ProductsMainFilterBlock from '../../component/ProductsMainFilterBlock/ProductsMainFilterBlock';
 import ScrollUpButton from '../../component/ScrollUpButton/ScrollUpButton';
 import ProductCard from '../../component/ProductCard/ProductCard';
-import { ProductData } from '../../data/productData';
+import { ProductData } from '../../data/products';
 import ProductNotFound from '../../component/ProductNotFound/ProductNotFound';
 
 const ProductPage = () => {
@@ -33,63 +33,27 @@ const ProductPage = () => {
   };
 
   const getFilteredAndSortedProductsList = () => {
-    const newProdList = products.items;
-    const searchedByName = searchState.toLowerCase();
-    const categoryIsSets = filter.category !== 'clear';
-    const maxPriceIsSets = filter.maxPrice > 0;
-    const filteredProductsByName = newProdList.filter(({ name }) => name.toLowerCase().includes(searchedByName));
+    const searchedProducts = products.items.filter(({ name, category, subcategory }) => name.toLowerCase().includes(searchState.toLowerCase())
+      || subcategory.toLowerCase().includes(searchState.toLowerCase())
+      || category.toLowerCase().includes(searchState.toLowerCase()));
+    const filteredItems = () => searchedProducts.filter(({ category, price }) => {
+      const categoryMatch = category === filter.category || filter.category === 'clear';
+      const minPriceMatch = price >= filter.minPrice || filter.minPrice === 0;
+      const maxPriceMatch = price <= filter.maxPrice || filter.maxPrice === 0;
+      return categoryMatch && minPriceMatch && maxPriceMatch;
+    });
+
+    const finalResult = filteredItems();
 
     switch (filter.sortOption) {
       case 'asc':
-        if (categoryIsSets && maxPriceIsSets) {
-          setProductList(filteredProductsByName.filter(({ category, price, name }) => category === filter.category
-            && price >= filter.minPrice
-            && price <= filter.maxPrice
-            && name.toLowerCase().includes(searchedByName)).sort((a: any, b: any) => a.name.localeCompare(b.name)));
-        } else if (!categoryIsSets && maxPriceIsSets) {
-          setProductList(filteredProductsByName.filter(({ price, name }) => price >= filter.minPrice
-            && price <= filter.maxPrice
-            && name.toLowerCase().includes(searchedByName)).sort((a: any, b: any) => a.name.localeCompare(b.name)));
-        } else if (categoryIsSets) {
-          setProductList(filteredProductsByName.filter(({ category, name }) => category === filter.category
-            && name.toLowerCase().includes(searchedByName)).sort((a: any, b: any) => a.name.localeCompare(b.name)));
-        } else {
-          setProductList(filteredProductsByName.sort((a: any, b: any) => a.name.localeCompare(b.name)));
-        }
+        setProductList(finalResult.sort((a: any, b: any) => a.name.localeCompare(b.name)));
         break;
       case 'desc':
-        if (categoryIsSets && maxPriceIsSets) {
-          setProductList(filteredProductsByName.filter(({ category, price, name }) => category === filter.category
-            && price >= filter.minPrice
-            && price <= filter.maxPrice
-            && name.toLowerCase().includes(searchedByName)).sort((a: any, b: any) => b.name.localeCompare(a.name)));
-        } else if (!categoryIsSets && maxPriceIsSets) {
-          setProductList(filteredProductsByName.filter(({ price, name }) => price >= filter.minPrice
-            && price <= filter.maxPrice
-            && name.toLowerCase().includes(searchedByName)).sort((a: any, b: any) => b.name.localeCompare(a.name)));
-        } else if (categoryIsSets) {
-          setProductList(filteredProductsByName.filter(({ category, name }) => category === filter.category
-            && name.toLowerCase().includes(searchedByName)).sort((a: any, b: any) => b.name.localeCompare(a.name)));
-        } else {
-          setProductList(filteredProductsByName.sort((a: any, b: any) => b.name.localeCompare(a.name)));
-        }
+        setProductList(finalResult.sort((a: any, b: any) => b.name.localeCompare(a.name)));
         break;
       default:
-        if (categoryIsSets && maxPriceIsSets) {
-          setProductList(filteredProductsByName.filter(({ category, price, name }) => category === filter.category
-            && price >= filter.minPrice
-            && price <= filter.maxPrice
-            && name.toLowerCase().includes(searchedByName)));
-        } else if (!categoryIsSets && maxPriceIsSets) {
-          setProductList(filteredProductsByName.filter(({ price, name }) => price >= filter.minPrice
-            && price <= filter.maxPrice
-            && name.toLowerCase().includes(searchedByName)));
-        } else if (categoryIsSets) {
-          setProductList(filteredProductsByName.filter(({ category, name }) => category === filter.category
-            && name.toLowerCase().includes(searchedByName)));
-        } else {
-          setProductList(filteredProductsByName);
-        }
+        setProductList(finalResult);
     }
   };
 
@@ -144,7 +108,7 @@ const ProductPage = () => {
           <input
             className="search__input"
             type="text"
-            placeholder="Search by product name..."
+            placeholder="Search..."
             onChange={(e) => { setSearchState(e.target.value); }}
           />
 
@@ -190,18 +154,9 @@ const ProductPage = () => {
               />
             </div>
           ) : <span />}
-
         </div>
       </div>
       <ScrollUpButton />
-      {/* <div className="toast toast-grey">
-        <span className="toast__text">Product is added in cart!</span>
-        <span className="toast__close">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5.99999 4.586L10.243 0.343003C10.6335 -0.0474629 11.2665 -0.0474638 11.657 0.343002V0.343002C12.0475 0.733467 12.0475 1.36654 11.657 1.757L7.41399 6L11.657 10.243C12.0475 10.6335 12.0475 11.2665 11.657 11.657V11.657C11.2665 12.0475 10.6335 12.0475 10.243 11.657L5.99999 7.414L1.75699 11.657C1.36652 12.0475 0.733452 12.0475 0.342986 11.657V11.657C-0.0474791 11.2665 -0.0474789 10.6335 0.342987 10.243L4.58599 6L0.342987 1.757C-0.0474782 1.36654 -0.0474791 0.733467 0.342986 0.343002V0.343002C0.733452 -0.0474638 1.36652 -0.0474637 1.75699 0.343002L5.99999 4.586Z" fill="" />
-          </svg>
-        </span>
-      </div> */}
     </>
   );
 };

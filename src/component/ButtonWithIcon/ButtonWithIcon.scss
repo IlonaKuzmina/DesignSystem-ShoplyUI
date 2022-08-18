@@ -1,4 +1,4 @@
-.text__button {
+.text__btn {
   line-height: 132%;
   font-size: 20px;
   letter-spacing: 0.015em;
@@ -6,32 +6,36 @@
   cursor: pointer;
   text-transform: capitalize;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
-.text__button--primary {
+.text__btn--primary {
   color: white;
   border-color: #211f1c;
   background-color: #211f1c;
 }
 
-.text__button--secondary {
+.text__btn--secondary {
   background: #ffffff;
   border: 1px solid #616467;
   color: #616467;
 }
 
-.text__button--gray {
+.text__btn--gray {
   background: #393d45;
   color: white;
   border: none;
 }
 
-.text__button--icon {
+.text__btn--icon {
   background: #ffffff;
   border: none;
 }
 
-.icon__button--cart{
+.icon__btn--cart {
   display: inline-block;
 }
 

@@ -12,6 +12,8 @@ body {
 html,
 body {
   height: 100%;
+  font-family: Roboto, source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 code {

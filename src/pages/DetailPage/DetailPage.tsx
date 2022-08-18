@@ -5,7 +5,7 @@ import {
   addCount, addToCart, countAllInCart, removeCount,
 } from '../../reducer/productReducer/productReducer';
 import { AppDispatch, RootState } from '../../reducer/store';
-import { ProductData } from '../../data/productData';
+import { ProductData } from '../../data/products';
 import Button from '../../component/Button/Button';
 import NavigationLine from '../../component/NavigationLine/NavigationLine';
 import './DetailPage.scss';
