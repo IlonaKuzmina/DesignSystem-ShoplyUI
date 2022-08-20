@@ -4,18 +4,18 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import store from './reducer/store';
 
 import './App.css';
-import Footer from './component/Footer/Footer';
-import Navigation from './component/Navigation/Navigation';
-import AboutPage from './pages/AboutPage/AboutPage';
-import CartPage from './pages/CartPage/CartPage';
-import DetailPage from './pages/DetailPage/DetailPage';
-import HomePage from './pages/HomePage/HomePage';
-import LoginPage from './pages/LoginPage/LoginPage';
-import ProductsPage from './pages/ProductsPage/ProductsPage';
-import AdminProductsPage from './pages/AdminProductsPage/AdminProductsPage';
-import AdminHomePage from './pages/AdminHomePage/AdminHomePage';
-import AdminHeader from './component/AdminHeader/AdminHeader';
-import Page404 from './pages/Page404/Page404';
+import Footer from './component/Atoms/Footer/Footer';
+import Navigation from './component/Molecules/Navigation/Navigation';
+import AboutPage from './component/Pages/AboutPage/AboutPage';
+import CartPage from './component/Pages/CartPage/CartPage';
+import DetailPage from './component/Pages/DetailPage/DetailPage';
+import HomePage from './component/Pages/HomePage/HomePage';
+import LoginPage from './component/Pages/LoginPage/LoginPage';
+import ProductsPage from './component/Pages/ProductsPage/ProductsPage';
+import AdminProductsPage from './component/Pages/AdminProductsPage/AdminProductsPage';
+import AdminHomePage from './component/Pages/AdminHomePage/AdminHomePage';
+import AdminHeader from './component/Atoms/AdminHeader/AdminHeader';
+import Page404 from './component/Pages/Page404/Page404';
 
 const App = () => {
   const [adminIsLoged, setAdminIsLoged] = useState(false);
@@ -29,6 +29,7 @@ const App = () => {
     if (adminUser.email === logInfo.email && adminUser.password === logInfo.password) {
       setAdminIsLoged(true);
     } else {
+      // eslint-disable-next-line no-alert
       alert('Username and/or password do not match.');
     }
   };

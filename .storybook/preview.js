@@ -1,3 +1,7 @@
+import '../src/index.css';
+import '../src/styles/base.scss';
+import '../src/styles/grids.scss';
+
 export const parameters = {
   // layout: 'centered',
   backgrounds: {
