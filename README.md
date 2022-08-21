@@ -3,11 +3,9 @@
 This responsive project is a design reproduction from [Figma community project](https://www.figma.com/community/file/1122583980813887289) with full webshop functionality.
 
 ### Shoply__Browser: [LINK](https://ShoplyUI.surge.sh)
+### Shoply StoryBook: [LINK](https://www.chromatic.com/library?appId=6301dbbdf367b3ef8fef0a0d)
 
 ![Shoply](https://user-images.githubusercontent.com/98387598/180777450-78a28ce3-5261-4d55-8954-2327a294b760.JPG)
-
-### Deployed StoryBook: [LINK](https://www.chromatic.com/library?appId=6301dbbdf367b3ef8fef0a0d)
-
 
 # Getting Started with Create React App
 
