@@ -20,6 +20,7 @@ export const ProductCard: FC<ProductCardProps> = ({
   return (
     <div className="product__card--wrapper" key={id}>
       <div
+        onClick={onClick}
         key={id}
         className="card"
         style={{ backgroundImage: `url(${image})` }}

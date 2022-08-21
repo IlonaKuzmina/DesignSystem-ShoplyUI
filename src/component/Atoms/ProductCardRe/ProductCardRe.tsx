@@ -8,7 +8,7 @@ import './ProductCardRe.scss';
 type ProductCardProps = {
   id?: number,
   image?: string,
-  onClick: ()=>void,
+  onClick: () => void,
 }
 
 export const ProductCard: FC<ProductCardProps> = ({
@@ -18,6 +18,7 @@ export const ProductCard: FC<ProductCardProps> = ({
 
   return (
     <div
+      onClick={onClick}
       key={id}
       className="card__wrapper"
       style={{ backgroundImage: `url(${image})` }}
@@ -25,7 +26,7 @@ export const ProductCard: FC<ProductCardProps> = ({
       <div className="card__button--container">
         <button
           className="product__button--customisation"
-          onClick={() => onClick}
+          onClick={onClick}
         >
           detail
 
