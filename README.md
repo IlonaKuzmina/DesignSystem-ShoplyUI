@@ -2,7 +2,7 @@
 
 This responsive project is a design reproduction from [Figma community project](https://www.figma.com/community/file/1122583980813887289) with basic webshop functionality.
 
-### Shoply__Browser: [LINK](https://ShoplyUI.surge.sh)
+### Shoply__Browser: [LINK](https://shoplyui.surge.sh)
 ### Shoply StoryBook: [LINK](https://6301dbbdf367b3ef8fef0a0d-pjeqmkeqgf.chromatic.com/?path=/story/components-atoms-adminburgernav--template)
 
 ![Shoply](https://user-images.githubusercontent.com/98387598/180777450-78a28ce3-5261-4d55-8954-2327a294b760.JPG)
