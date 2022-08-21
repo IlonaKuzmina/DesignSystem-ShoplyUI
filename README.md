@@ -6,7 +6,7 @@ This responsive project is a design reproduction from [Figma community project](
 
 ![Shoply](https://user-images.githubusercontent.com/98387598/180777450-78a28ce3-5261-4d55-8954-2327a294b760.JPG)
 
-### Deployed StoryBook: [IN PROGRESS]()
+### Deployed StoryBook: [LINK](https://www.chromatic.com/library?appId=6301dbbdf367b3ef8fef0a0d)
 
 
 # Getting Started with Create React App
