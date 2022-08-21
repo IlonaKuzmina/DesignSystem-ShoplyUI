@@ -15,4 +15,4 @@ export default {
   ],
 } as ComponentMeta<typeof Footer>;
 
-export const Primary = () => <Footer />;
+export const Template = () => <Footer />;

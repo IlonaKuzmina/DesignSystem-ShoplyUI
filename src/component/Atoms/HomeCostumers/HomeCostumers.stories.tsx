@@ -16,4 +16,4 @@ export default {
   ],
 } as ComponentMeta<typeof HomeCostumers>;
 
-export const CostumersCard = () => <HomeCostumers />;
+export const Template = () => <HomeCostumers />;

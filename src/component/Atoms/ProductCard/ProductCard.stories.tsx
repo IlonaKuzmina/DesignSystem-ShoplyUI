@@ -13,7 +13,7 @@ export default {
       <Provider store={store}>
         {' '}
         <div style={{
-          margin: '1em', width: '269px', height: '518px', backgroundColor: 'white', padding: '5px',
+          margin: '1em', width: '249px', height: '518px', backgroundColor: 'white', padding: '5px', borderRadius: '5px',
         }}
         >
           <Story />

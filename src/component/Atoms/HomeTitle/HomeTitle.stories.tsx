@@ -8,7 +8,7 @@ export default {
   component: HomeTitle,
   decorators: [
     (Story) => (
-      <div style={{ margin: '1em' }}>
+      <div style={{ margin: '1em', backgroundColor: 'white', borderRadius: '5PX' }}>
         <Story />
       </div>
     ),
@@ -17,7 +17,7 @@ export default {
 
 const Template: ComponentStory<typeof HomeTitle> = (args) => <HomeTitle {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const TitleTemplate = Template.bind({});
+TitleTemplate.args = {
   title: 'Benefits Using Our Services',
 };

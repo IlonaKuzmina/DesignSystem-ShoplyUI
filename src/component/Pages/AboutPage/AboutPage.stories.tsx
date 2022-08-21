@@ -9,9 +9,19 @@ export default {
   component: AboutPage,
   decorators: [
     (Story) => (
-      <MemoryRouter initialEntries={['/home']}>{Story()}</MemoryRouter>
+      <MemoryRouter initialEntries={['/home']}>
+        <div style={{
+          backgroundColor: 'white',
+          padding: '10px',
+          borderRadius: '5px',
+        }}
+        >
+          {Story()}
+        </div>
+
+      </MemoryRouter>
     ),
   ],
 } as ComponentMeta<typeof AboutPage>;
 
-// export const AboutContent = () => <AboutPage />;
+export const AboutPageContent = () => <AboutPage />;

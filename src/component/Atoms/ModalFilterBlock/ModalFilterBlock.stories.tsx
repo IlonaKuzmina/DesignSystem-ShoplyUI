@@ -12,7 +12,7 @@ export default {
     (Story) => (
       <Provider store={store}>
         {' '}
-        <div style={{ margin: '1em', width: '600px' }}>
+        <div style={{ margin: '1em', maxWidth: '500px' }}>
           <Story />
         </div>
       </Provider>

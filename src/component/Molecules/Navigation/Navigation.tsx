@@ -13,7 +13,7 @@ export const Navigation = () => {
     <div>
       <div className="navigation__wrapper">
         <div className="logo__wrapper" onClick={() => { navigate('/home'); }}>
-          <img src="./assets/logo/Shoply..png" alt="" />
+          <img src="/assets/logo/Shoply..png" alt="" />
         </div>
 
         <div className="navigation__links--container">

@@ -15,4 +15,4 @@ export default {
   ],
 } as ComponentMeta<typeof HomePartners>;
 
-export const Primary = () => <HomePartners />;
+export const Template = () => <HomePartners />;

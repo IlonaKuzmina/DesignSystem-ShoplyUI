@@ -10,6 +10,7 @@ import {
 import { AppDispatch, RootState } from '../../../reducer/store';
 import './CartPage.scss';
 import HomeTitle from '../../Atoms/HomeTitle/HomeTitle';
+import CartSubtotal from '../../Atoms/CartSubtotal/CartSubtotal';
 
 const CartPage = () => {
   const items = useSelector(({ product }: RootState) => product);
@@ -65,32 +66,7 @@ const CartPage = () => {
             />
           ))}
 
-          <div className="subtotal__container">
-            <div className="subtotal__line">
-              <span>Subtotal</span>
-              <span>:</span>
-              <span>
-                $
-                {items.cartTotalSum}
-              </span>
-            </div>
-            <div className="subtotal__line">
-              <span>Shipping fee</span>
-              <span>:</span>
-              <span>
-                $
-                {shipingFee}
-              </span>
-            </div>
-            <div className="subtotal__line">
-              <span>Total Order</span>
-              <span>:</span>
-              <span>
-                $
-                {items.cartTotalSum + shipingFee}
-              </span>
-            </div>
-          </div>
+          <CartSubtotal cartTotalSum={items.cartTotalSum} shipingFee={shipingFee} />
 
           <div className="checkout__button--container">
             <Button padding="13px 18px" label="Close" onClick={() => navigate('/home')} />

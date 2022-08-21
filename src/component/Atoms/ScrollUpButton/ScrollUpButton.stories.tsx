@@ -13,6 +13,6 @@ export default {
   ],
 } as ComponentMeta<typeof ScrollUpButton>;
 
-export const Primary: ComponentStory<typeof ScrollUpButton> = () => (
+export const Template: ComponentStory<typeof ScrollUpButton> = () => (
   <ScrollUpButton />
 );

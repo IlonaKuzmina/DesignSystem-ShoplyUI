@@ -23,7 +23,7 @@ export const HomeHeader = () => {
         </div>
         <div className="col-xs-12 col-sm-7 col-md-6">
           <div className="header__wrapper--right">
-            <img src="/assets/images/title__pick.png" alt="Title" />
+            <img className="header__image" src="/assets/images/title__pick.png" alt="Title" />
           </div>
         </div>
       </div>

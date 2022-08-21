@@ -9,6 +9,9 @@
   opacity: 4;
   transition: 0.4s;
   overflow-y: auto;
+  border-radius: 5px;
+  max-width: 90%;
+  max-height: 90%;
 }
 
 .modal.active {

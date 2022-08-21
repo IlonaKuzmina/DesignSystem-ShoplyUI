@@ -1,0 +1,28 @@
+.subtotal__container {
+  max-width: 550px;
+  padding: 28px 54px;
+  margin-top: 95px;
+  margin: 0 auto;
+  margin-right: 87px;
+  background: #f8f8f8;
+  border-radius: 5px;
+}
+
+.subtotal__line {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 770px) {
+  .subtotal__container {
+    margin: 50px auto;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .subtotal__container {
+    max-width: 326px;
+    padding: 22px 32px;
+    margin: 30px 20px 32px;
+  }
+}

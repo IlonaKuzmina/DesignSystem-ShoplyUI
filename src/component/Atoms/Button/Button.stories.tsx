@@ -21,10 +21,12 @@ export const Primary = Template.bind({});
 Primary.args = {
   primary: true,
   label: 'shop now',
+  padding: '10px 20px',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   primary: false,
   label: 'shop now',
+  padding: '10px 20px',
 };

@@ -15,4 +15,4 @@ export default {
   ],
 } as ComponentMeta<typeof NormalScreenAbout>;
 
-export const Primary = () => <NormalScreenAbout />;
+export const Template = () => <NormalScreenAbout />;

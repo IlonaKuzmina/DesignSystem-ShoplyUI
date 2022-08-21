@@ -13,9 +13,13 @@
   margin-bottom: 32px;
 }
 
+.about__image--wrapper {
+  padding: 10px;
+}
+
 @media screen and (max-width: 1020px) {
   .aboutpage__image {
-    width: 100%;
+    width: 98%;
     height: 100%;
     object-fit: contain;
     border: 4px solid #616467;

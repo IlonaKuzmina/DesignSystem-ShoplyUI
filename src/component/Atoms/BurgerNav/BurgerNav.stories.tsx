@@ -7,7 +7,7 @@ import store from '../../../reducer/store';
 import BurgerNav from './BurgerNav';
 
 export default {
-  title: 'Components/Molecules/BurgerNav',
+  title: 'Components/Atoms/BurgerNav',
   component: BurgerNav,
   decorators: [
     (Story) => (
@@ -18,4 +18,4 @@ export default {
   ],
 } as ComponentMeta<typeof BurgerNav>;
 
-export const Primary = () => <BurgerNav />;
+export const Template = () => <BurgerNav />;

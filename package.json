@@ -25,7 +25,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "chromatic": "npx chromatic --project-token=b2ccaaa64fc5"
   },
   "eslintConfig": {
     "extends": [
@@ -69,6 +70,7 @@
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
     "babel-plugin-named-exports-order": "^0.0.2",
+    "chromatic": "^6.7.4",
     "cors": "^2.8.5",
     "eslint": "^8.20.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -83,5 +85,7 @@
     "sass": "^1.53.0",
     "typescript": "^4.7.4",
     "webpack": "^5.73.0"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "designsystem-shoply@0.1.0"
 }

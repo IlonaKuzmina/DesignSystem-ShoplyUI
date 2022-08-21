@@ -2,6 +2,7 @@
   margin-top: 8px;
   padding: 36px 76px 97px 105px;
   background: linear-gradient(90deg, #fcf9f6 1.6%, #ffffff 100%);
+  border-radius: 5px;
 }
 
 .header__wrapper--left {
@@ -37,9 +38,17 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 834px) {
   .header__title {
     font-size: 30px;
+  }
+
+  .header__wrapper--right{
+    width: 100%;
+  }
+
+  .header__image{
+    width: 100%;
   }
 
   .header__text {
@@ -50,13 +59,17 @@
 
   .home__header--wrapper {
     margin-top: 8px;
-    padding: 50px 80px 0 30px;
+    padding: 50px 60px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .header__wrapper--right {
     display: none;
+  }
+
+  .header__wrapper--left {
+    margin-bottom: 30px;
   }
 }
 
@@ -74,5 +87,9 @@
   .home__header--wrapper {
     margin-top: 5px;
     padding: 35px 24px 41px;
+  }
+
+  .header__wrapper--left {
+    margin-bottom: 0;
   }
 }

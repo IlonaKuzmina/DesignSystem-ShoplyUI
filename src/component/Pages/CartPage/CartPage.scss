@@ -17,15 +17,6 @@
   color: black;
 }
 
-.subtotal__container {
-  max-width: 550px;
-  padding: 28px 54px;
-  margin-top: 95px;
-  margin: 0 auto;
-  margin-right: 87px;
-  background: #f8f8f8;
-}
-
 .checkout__button--container {
   display: inline-block;
   display: flex;
@@ -33,16 +24,7 @@
   margin: 80px 87px 110px 0;
 }
 
-.subtotal__line {
-  display: flex;
-  justify-content: space-between;
-}
-
 @media screen and (max-width: 770px) {
-  .subtotal__container {
-    margin: 50px auto;
-  }
-
   .checkout__button--container {
     margin-top: 50px;
     margin-bottom: 80px;
@@ -52,12 +34,6 @@
 @media screen and (max-width: 500px) {
   .cart__details {
     display: none;
-  }
-
-  .subtotal__container {
-    max-width: 326px;
-    padding: 22px 32px;
-    margin: 30px 20px 32px;
   }
 
   .checkout__button--container {

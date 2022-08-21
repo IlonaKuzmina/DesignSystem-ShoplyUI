@@ -21,19 +21,22 @@ export const Primary = Template.bind({});
 Primary.args = {
   primary: true,
   label: 'shop now',
-  icon: './assets/icons/arrow.svg',
+  icon: '/assets/icons/arrow.svg',
+  padding: '10px 50px',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   primary: false,
   label: 'shop now',
-  icon: './assets/icons/arrow.svg',
+  icon: '/assets/icons/arrow.svg',
+  padding: '10px 20px 10px 40px',
 };
 
 export const Gray = Template.bind({});
 Gray.args = {
   type: 'gray',
   label: 'shop now',
-  icon: './assets/icons/arrow.svg',
+  icon: '/assets/icons/arrow.svg',
+  padding: '10px 20px',
 };

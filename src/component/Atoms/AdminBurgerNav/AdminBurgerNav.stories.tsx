@@ -18,7 +18,4 @@ export default {
   ],
 } as ComponentMeta<typeof AdminBurgerNav>;
 
-const Template: ComponentStory<typeof AdminBurgerNav> = (args) => <AdminBurgerNav {...args} />;
-
-export const Primary = Template.bind({});
-Primary.args = { logout: false };
+export const Template: ComponentStory<typeof AdminBurgerNav> = (args) => <AdminBurgerNav {...args} />;

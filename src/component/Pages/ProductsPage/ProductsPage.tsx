@@ -15,7 +15,7 @@ import ProductCard from '../../Atoms/ProductCard/ProductCard';
 import { ProductData } from '../../../data/products';
 import ProductNotFound from '../../Atoms/ProductNotFound/ProductNotFound';
 
-const ProductPage = () => {
+const ProductsPage = () => {
   const products = useSelector(({ product }: RootState) => product);
   const [visibleProducts, setVisibleProducts] = useState(8);
   const [searchState, setSearchState] = useState('');
@@ -170,4 +170,4 @@ const ProductPage = () => {
   );
 };
 
-export default ProductPage;
+export default ProductsPage;

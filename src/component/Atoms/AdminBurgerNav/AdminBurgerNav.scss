@@ -17,6 +17,8 @@
   color: #fff;
   height: 112px;
   font-weight: bold;
+  border-radius: 5px;
+  padding-left: 20px;
 }
 
 #cart {
@@ -26,8 +28,7 @@
 
 #counter {
   position: absolute;
-  top: -3px;
-  left: 21px;
+  top: 3px;
 }
 
 .menu {

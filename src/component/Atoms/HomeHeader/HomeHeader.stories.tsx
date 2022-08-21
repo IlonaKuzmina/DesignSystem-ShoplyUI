@@ -16,4 +16,4 @@ export default {
   ],
 } as ComponentMeta<typeof HomeHeader>;
 
-export const Primary = () => <HomeHeader />;
+export const Template = () => <HomeHeader />;
