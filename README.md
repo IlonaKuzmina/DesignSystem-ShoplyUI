@@ -10,8 +10,8 @@ This responsive project is a design reproduction from [Figma community project](
 <img src="https://user-images.githubusercontent.com/98387598/173138381-1947c5f5-4237-4332-ba71-8baf47189279.png" alt="HTML" width="30">
 <br>
 
-<a href="https://Shoply_UI.surge.sh">Link to Storybook</a>
-<img src="https://6301dbbdf367b3ef8fef0a0d-pjeqmkeqgf.chromatic.com/?path=/story/components-molecules-homeproduct--primary" alt="Storybook" width="30">
+<a href="https://6301dbbdf367b3ef8fef0a0d-pjeqmkeqgf.chromatic.com/?path=/story/components-atoms-adminburgernav--template">Link to Storybook</a>
+<img src="https://github.com/devicons/devicon/blob/master/icons/storybook/storybook-original.svg" alt="Storybook" width="40">
 
 <br>
 
